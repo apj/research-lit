@@ -1,4 +1,7 @@
 \documentclass{article}
+
+\include{preamble}
+
 \title{Technical Report}
 \author{Allan Jones}
 \begin{document}
@@ -16,6 +19,26 @@
 
 \section{Technical Detail} % (fold)
 \label{sec:technical_detail}
+
+%------------------------------------------------------------------------------
+\begin{center}
+\begin{minipage}{5.5in}%
+\begin{python}[caption={Standard GA Search in Python},label={code:ec_GA}] 
+def GeneticAlgorithm(m, n, fn):
+    # fn is a fitness function to evaluate individuals
+    parent_pop = Population(size=m)
+    t = 0
+    while search_not_finished():
+        offspring_pop = select_and_clone(parent_pop, size=n)
+        do_crossover(offspring_pop)
+        do_mutation(offspring_pop)  
+        evaluate_all(offspring_pop, fn) 
+        parent_pop = offspring_pop
+        t += 1
+\end{python}
+\end{minipage}
+\end{center}
+%------------------------------------------------------------------------------
 
 % section technical_detail (end)
 

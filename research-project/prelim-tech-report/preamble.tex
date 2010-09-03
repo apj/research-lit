@@ -1,0 +1,58 @@
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage{setspace}
+\usepackage{fontenc}
+
+%------------------------------------------------------------------------------
+% setting for displaying python code in its own environment
+%------------------------------------------------------------------------------
+\usepackage{listings} %for code listings
+
+\renewcommand{\lstlistlistingname}{Code Listings}
+%\renewcommand{\lstlistingname}{Code Listing}% default is 'Listing'
+
+\definecolor{lstgray}{gray}{0.2}
+\definecolor{lstgreen}{rgb}{0,0.5,0}
+\definecolor{lstmaroon}{rgb}{0.4,0.4,0.4} % comments
+\definecolor{lstpurple}{rgb}{0.5,0,1.0}
+\definecolor{lstdarkpurple}{rgb}{0.2,0,0.5}
+\definecolor{lstdarkblue}{rgb}{0,0,0.6}
+
+\lstnewenvironment{python}[1][]{
+\lstset{
+language=python,
+basicstyle=\ttfamily\footnotesize\setstretch{1},
+stringstyle=\color{lstdarkpurple},
+showstringspaces=false,
+alsoletter={1234567890},
+otherkeywords={\ , \}, \{},
+keywordstyle=\color{black},
+emph={access,and,break,class,continue,def,del,elif,else,%
+except,exec,finally,for,from,global,if,import,in,is,%
+lambda,not,or,pass,print,raise,return,try,while},
+emphstyle=\color{blue}\bfseries,
+emph={[2]True, False, None, self},
+emphstyle=[2]\color{lstgreen},
+emph={[3]from, import, as},
+emphstyle=[3]\color{blue},
+upquote=true,
+morecomment=[s]{"""}{"""},
+commentstyle=\color{lstmaroon}\slshape,
+%emph={[4]1, 2, 3, 4, 5, 6, 7, 8, 9, 0},
+%emphstyle=[4]\color{red},
+literate=*{:}{{\textcolor{lstdarkblue}:}}{1}%
+{=}{{\textcolor{lstdarkblue}=}}{1}%
+{-}{{\textcolor{lstdarkblue}-}}{1}%
+{+}{{\textcolor{lstdarkblue}+}}{1}%
+{*}{{\textcolor{lstdarkblue}*}}{1}%
+{!}{{\textcolor{lstdarkblue}!}}{1}%
+{(}{{\textcolor{lstdarkblue}(}}{1}%
+{)}{{\textcolor{lstdarkblue})}}{1}%
+{[}{{\textcolor{lstdarkblue}[}}{1}%
+{]}{{\textcolor{lstdarkblue}]}}{1}%
+{<}{{\textcolor{lstdarkblue}<}}{1}%
+{>}{{\textcolor{lstdarkblue}>}}{1},%
+framexleftmargin=1mm, framextopmargin=1mm, 
+frame=Tb,%rulesepcolor=\color{blue},
+#1 }}{}
+%------------------------------------------------------------------------------
