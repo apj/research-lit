@@ -1,0 +1,103 @@
+% Titlepage
+\title{ \huge{\textbf{Vocabulary Evolution in Open Source Software Systems}} \\[1.2cm]
+\large{Faculty of Information and Communication Technologies\\
+Swinburne University of Technology\\
+Melbourne, Australia\\}
+\vspace{1.2cm} 
+\large{Submitted for the degree of Bachelor of Science (Professional Software Development) (Honours)} \\
+\vspace{1cm} 
+%\Large{Date} 
+} 
+\author{ \Large{\textbf{Allan Jones}} } 
+\date{2010} 
+\maketitle
+
+%%% Abstract
+\newpage 
+\pdfbookmark[0]{Abstract}{abstract}
+\chapter*{Abstract}
+\vspace{-0.75cm}
+\setstretch{1.12}
+
+% \textbf{Sentence about software artefacts (source code) containing language}
+% \textbf{This language represents an understanding of the problem space, how it has been constructed, how the developers describe the way it should function}
+% \textbf{This vocabulary allows developers to form a mental model of the software system and sustain development efforts empowered with a sufficient understanding of the software}
+% \textbf{As the software evolves, the vocabulary will also evolve, being extended and modified to support new concepts and terminology related the functionality being introduced, metaphors used in the design of the system's architecture and other such driving factors.}
+% \textbf{In order to preserve the mental model held by those responsible for the software's development and maintain developer productivity, a clear and consistent understanding of the vocabulary must be maintained.}
+% \textbf{In this thesis, we investigate how the vocabularies within source code are built and evolved over time to determine .}
+
+% Software developers can be as expressive as they want, as long as they meet the rules of the platform the application is being run on...
+% 
+% Typically, the terms will be re-used, forming a vocabulary (rather than being arbitrarily selected)...
+
+% When writing source code used to compose software systems, developers are afforded great flexibility in terms of the language they can use within their code. This is bound only by the requirement to conform to the syntactic rules for the platform upon which the software system is to be run.
+% 
+% 
+% Gists:
+% - When writing code, software developers will express their intentions for what the application should do (and how it is constructed) in language that they understand (understanding may be from previous experience or through some shared establishment)
+% - It is important that code be understandable for those involved in its development (for ease of development) -- rarely only one person developing a non-trivial software system
+% - Software evolution (leading to changes to the vocabulary) threaten the mental model established by programmers
+
+\textbf{TODO: Find a way to disambiguate here between natural language and programming language}
+Software developers are afforded great flexibility in the terms of the language they can use to write source code, bound only by the syntactic rules which are governed by the platform they are developing for. This flexibility allows developers to expressive about what the software should do and the way in which it has been constructed. Typically, the language used is not arbitrarily selected, but rather, is a vocabulary of terms that maps to the developers understanding of the software system, which is generally shared by multiple parties.
+
+As a software system is evolved over time, undergoing addition of new functionality and maintenance efforts, the vocabulary will also undergo change, being extended and modified to support these outcomes of evolution. This change threatens the understanding of the software held by developers, driving the need for control over the preservation of the vocabulary.
+
+\textbf{TODO: Probably need a bit more here to communicate what is lacking in the current landscape, emphasising the need for research of this nature}
+
+In this thesis, we address the problem of identifying when, in the evolution of a software system, efforts towards maintaining vocabulary are required and to which areas of the software they are best directed. We conduct a study of over 40 open source Java software systems, investigating how and when source code vocabularies are formed in the process of software evolution, the nature of their growth and change and how the terms in the vocabulary are distributed throughout the codebase. Finally, we determine the applicability of the laws of software evolution in describing the evolution of the source code vocabulary. 
+
+% Broad outcome of the thesis. How we go about reaching this outcome. What our general findings were.
+
+% In this thesis we address the problem of how a software system's vocabulary is built and evolved over time. Examining a large number of software systems, we reveal that, in general, the vocabulary of a software system is established in early revisions and refined incrementally as the system matures. 
+
+% Outline how the thesis contributes to the research community (broadly). What are the specific contributions that can be directly applied. How have we applied this technique in this thesis and what has it shown us.
+
+% - Contributes by providing an understanding of the nature of vocabulary within source code.
+% - Propose a method for identifying the ways in which the source code vocabulary grows and how terms are distributed within the codebase.
+% - Our approach provides representation of vocabulary that individualise software systems (as opposed to being generic). Using this approach, we find similarities between systems in terms of how the vocabulary is formed and the sort of changes applied to it over time (be more specific!).
+
+% Expand upon last sentence of the last previous paragraph about what findings were.
+% - We show that vocabulary is typically very stable and will only change drastically in major version releases, containing big changes to the codebase as a whole (likely due to the introduction of new features).
+
+% Outline any other significant contributions found by the study.
+% - We also investigated vocabulary evolution with regard to the Laws of Software Evolution to see if there was any parallels, we found that continuing growth, continuing change, conservation of stability and conservation of familiarity were present in the systems we studied.
+
+
+% From Wikipedia:
+% A mental model is an explanation of someone's thought process about how something works in the real world.
+% It is a representation of the surrounding world, the relationships between its various parts and a person's
+% intuitive perception about their own acts and their consequences. Our mental models help shape our behaviour
+%  and define our approach to solving problems (akin to a personal algorithm) and carrying out tasks.
+
+% Developers (humans) use vocabulary in source code to capture:
+% - Domain
+% - Their understanding of the problem (mental model) (source code involves more than one developer! -- need shared mental model)
+
+% Software/source code, while it has syntax to decorate what the developer is trying to do for the sake of compiler/interpreter, is expressed in natural language. Programmers use natural language building blocks to form a vocabulary which:
+% - Represents an understanding of the software system
+% - Represents the developers intentions for how it should behave
+
+% Dedication
+\newpage \vspace*{8cm} 
+\begin{center}
+	\large Dedications
+\end{center}
+\newpage
+
+% Acknowledgements
+\pdfbookmark[0]{Acknowledgements}{acknowledgements}
+\chapter*{Acknowledgements}
+\vspace{-0.5cm}
+
+\vspace*{4cm}
+Allan Jones, 2010
+
+% Declaration
+\chapter*{Declaration}
+\vspace{-0.5cm}
+
+\singlespacing
+
+\tableofcontents \listoffigures \listoftables 
+\newpage

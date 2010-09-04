@@ -1,0 +1,35 @@
+% Set the font size, Swinburne specifies a readable font only
+\documentclass[12pt,a4paper]{report}
+
+\include{preamble}
+\usepackage[T1]{fontenc}
+\usepackage{tgbonum} %% Use the extended bookman font
+
+% Actual document
+\begin{document}
+
+% Show the title pages
+\pagenumbering{roman}
+
+%\tableofcontents
+%\newpage
+\include{title}
+
+% Set the spacing margin, 1.5 is required by Swinburne University
+\onehalfspacing
+
+\pagenumbering{arabic} \setcounter{page}{1}
+\include{01-intro}
+\include{02-background}
+\include{03-method}
+\include{04-findings}
+\include{05-conclusions}
+\include{appendix}
+
+\setstretch{1.0}
+
+\addcontentsline{toc}{chapter}{References}
+
+\bibliography{./allan}
+
+\end{document}

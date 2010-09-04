@@ -1,0 +1,127 @@
+%!TEX root = thesis.tex
+\chapter{Introduction}
+\label{chapter:Introduction} 
+
+% Opening parapraph suggested by Raj - 
+
+% Software systems are large, complex and are a substantial corpus of text. Language used by programmers is rich with semantic information
+
+% \textbf{TODO: Use this chapter to give an overview of the study (i.e. set the stage, provide a motivating problem, highlight why the problem is substantial enough to warrant study and cover attempts to solve the problem)}
+
+% \textbf{Notes:}
+% \textbf{Might be able to cut out the first sentence and make the second sentence the leading sentence}
+% \textbf{computer is boring...better word?}
+% \textbf{'Write code'/'writing code' -- repeated phrase!}
+
+Software systems are large, complex entities assembled by developers using source code --- the fundamental building block for contemporary software --- which communicates to the computer how an application should behave. Collectively, the source code that makes up even a small software system represents a substantial corpus of text, which is, in most cases, almost entirely written by humans. While there is an obligation on the developers part to ensure that the source code is written in a manner in which it can be executable by the system upon which it is designed for, developers have the liberty of using expressive language in writing their code.
+
+Utilising this freedom, developers are able to write code that is rich in semantic information regarding not only the purpose of the application and the domain in which it operates, but also the manner in which it has been designed and implemented. Such information is crucial in facilitating the development of mental models, which allow an adequate and consistent comprehension of the software for the developers involved in its construction.
+
+% \textbf{Could probably briefly highlight that software does change and why here, as it will strengthen our argument that mental models will have to change for software evolution}
+
+As software evolves to include new functionality for those who intend to use it, there will inherently be changes within the codebase to support this evolution, bringing about new concepts that require representation within the software and an associated vocabulary used to describe these concepts. This in turn requires the developers to adjust their mental models of the software, which can often be an expensive and timely process.
+
+\textbf{Cover what can be done to preserve mental models}
+
+\textbf{Cover other studies in this area}
+
+\textbf{Cover what our study may yield}
+
+% \textbf{Need to emphasise that mental models shouldn't be fucked with too much!}
+
+% Software systems are large corpora of text (source code), most of which is written by programmers ...
+% 
+% When programming, programmers (to make it easier/more comfortable) will write code which is communicative of how the system is supposed to function according to the programmer (not necessarily how it \emph{should} or \emph{does} function).
+% 
+% Through this approach, they build mental models of the software allowing them to enhance/maintain their understanding/comprehension of the system and the domain in which is operates within (emphasis on mental models being about concepts/comprehension!) \textbf{Put the word cognitive in here somewhere!}
+% 
+% However, software evolves over time to meet new requirements, fix defects, etc.
+% As the software evolves, the mental model we have formed of the software must also change, so that we can maintain our comprehension of the system.
+% 
+% \textbf{What is the current state of affairs in terms of establishing/maintaining mental models? Use the lack of tools in handling/understanding vocabulary evolution to motivate our study}
+% 
+% \textbf{Use this introduction as a hook!}
+
+% Set the scene -- start with the very core problem (mental models are difficult to build/maintain) -- this is just a general statement. Cover a little bit about studies relating to mental models and how they related to software...
+
+% Software systems are large, complex and are a substantial corpus of text. Language used by programmers is rich with semantic information...programmers, especially when best practice is applied, write their code as they intend it to work...this aids understanding of the code by other parties, as well maintenance efforts by those who wrote it (further down the track). Not only does it capture the intention of programmers, but also the domain concepts which are within the software.
+% 
+% Source code vocabulary -- helps programmers represent concepts/abstractions relating to the domain, metaphors borrowed from out things (patterns) and what programmers want the software (not necessarily what it actually does -- but the programmers way of expressing what it should do)
+
+% \textbf{A bit about how it important to study software evolution in general, and the advantages it brings about. This allows justification of why the study is longitudinal.}
+% 
+% \textbf{Note: Our research efforts could yield tools which help outline for individual versions which concepts should be documented -- this is more application than description, but is a direct output of our studies -- mention it!}
+
+\section{Research Goals} % (fold)
+\label{sec:research_goals}
+
+This study aims to provide an understanding of the nature of vocabulary within the source code of software systems and the impact that the process of software evolution has upon source code vocabulary.
+
+% \textbf{Paragraph could be a bit clearer with re: to documentation}
+% \textbf{Second sentence needs to be broken up}
+\textbf{Not happy with this paragraph -- needs a stronger/clearer argument}
+
+The study is driven by the desire to understand how vocabularies are built and distributed within software systems, how these properties change and in what stages of the software's evolution such changes occur. This knowledge can aid developers and managers in capturing and maintaining documentation for a vocabulary representative of that which is used within the source code by outlining terms which may be fundamental to the system, and by highlighting substantial changes in the vocabulary, giving a clearer indication of when the vocabulary should be documented and what requires documentation. This understanding can be also be applied in the comparison of different types of software systems, to assess the adequacy of the vocabulary that has been established and the viability of using the software system.
+
+The goal of this research is to provide a descriptive model of how vocabularies are established and then changed throughout the lifetime of a software system, with the aim of identifying patterns of source code vocabulary evolution that will allow a general understanding of the nature of the evolution, as opposed to investigating activities of software evolution that are the cause of changes to the vocabulary.
+
+% - Driven by the motivation to understand the rate at which vocabulary evolves and how it distributed throughout the system
+
+% - Such information might allow a more effective means of building representative vocabularies/documentation of terms (re: mental models) and where efforts towards maintaining the mental model should be targeted.
+
+% \begin{itemize}
+% 	\item When should we document the vocabulary
+% 	\item What aspects of the vocab should be documented
+% 	\item Which parts of the system contain vocab that could be unstable
+% 	\item Which parts of the vocab. are fundamental to the system, based on usage patterns over time.
+% 	\item Can be used to compare/contrast with other systems
+% 	\item Can be used as iteration retrospective
+% 	\item Investigate to see if laws of software evolution, which have been effective in describing the evolution of software systems, can also be used to describe vocabulary evolution
+% \end{itemize}
+
+% section research_goals (end)
+
+\section{Research Approach} % (fold)
+\label{sec:research_approach}
+What is the approach to addressing the problem?
+- Stats for the dataset we used (x classes, open source systems)
+- Data extraction (Mutations)
+
+We study open source Java software systems to due their non-restrictive licensing and available, in fact we use X number for this study.
+
+We extract metric information from the software systems JARs and prepare a representation of the history for the system.
+
+Then, we extract identifiers from the class files and extract individual words from the identifiers to build a representative vocabulary present within the system.
+
+\textbf{TODO: Bit more detail about what we are trying to find using the measures we used}
+
+We then utilise the vocabularies we have extracted for each of the versions and examine certain aspects. We use frequency distribution histograms and the Gini coefficient to measure the distribution of terms within the vocabulary and how this changes over time.
+
+% section research_approach (end)
+
+\section{Main Research Outcomes} % (fold)
+\label{sec:main_research_outcomes}
+
+In this thesis...
+- we address the gap in understanding of how source code vocabulary evolves, by finding that vocabulary is established early on and refined, added to in short bursts over time.
+
+- Certain terms are re-used and permeate throughout the system and some are specific to modules. There is a definite conservation of familiarity!
+
+- Distribution of terms is highly skewed (this matches the findings of Zipf law, confirming earlier work)
+
+Investigated Lehman's Laws with regard to vocabulary...found support for x, y, z laws. 
+
+% section main_research_outcomes (end)
+
+\section{Thesis Organisation} % (fold)
+\label{sec:thesis_organisation}
+
+\textbf{Background} highlights existing work investigating language used in software and motivates our own study.
+
+\textbf{Methodology} approach to data selection, extraction and analysis. Shows how we extract vocabularic elements from source code and build a history of vocabulary for software systems.
+
+\textbf{Findings} Highlights our findings from investigating vocabulary in software systems.
+
+\textbf{Summary} concludes the thesis and present opportunities for future work. In this chapter, we summarise our contributions resultant from the work within the thesis.
+
+% section thesis_organisation (end)
