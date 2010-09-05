@@ -10,31 +10,80 @@
 \section{Introduction} % (fold)
 \label{sec:introduction}
 
+Objectives of the report:
+- Outline (in some detail) the problem faced by high-traffic internet services when providing data to a lot of different people
+
+- Be more specific to the problem we face (mobile social networking application, location-based data retrieval)
+
+- Cover some of the general guidelines to solving these kinds of problems
+
+- Describe scenarios which we are likely to encounter
+
+- Describe and implement a possible solution to the problem
+
+- Test the proposed solution against the scenarios we devised
+
+- Discuss the performance of the solution we have proposed and comment upon aspects in which it has been successful and aspects in which it has been a failure
+
+- Based on the performance of the solution, suggest other solutions (or at least solution details) that we may be able to explore to address shortcomings of the proposed solution 
+
 % section introduction (end)
 
 \section{Background and Content} % (fold)
 \label{sec:background_and_content}
+
+\textbf{TODO: Should probably include some related work here}
+
+\textbf{Context}
+
+- Social media applications are become integrated within our daily lives
+
+- Effective means of communication and information discovery
+
+- Most of them are free...users like free stuff!
+
+- Mobile applications enable users to be out and about while surfing the web, something that wasn't really possible previously
+
+- There is stuff to do when users are out and about, which social media apps can enhance
+
+\textbf{Motivation}
+
+- Some social media apps are super rich in content and have a substantial base of users
+
+- This is a great thing, but somewhere this data needs to be stored (huge amounts of data!)
+
+- Additionally, not every user is going to want every bit of data
+
+- A search for personalised data (i.e. data that an individual user cares about) at a large-scale can be computationally expensive and slow (users don't like to wait!)
+
+- Caching alleviates this problem to some extent (allows computations to occur a smaller number of times, with the results stored -- caching tier is much lower latency than the datastore)
+
+- Problem is, that this doesn't come cheap
+
+- Cached data is not persistent (caching tier is separate from DB)
+
+- Need to ensure cache is not invalid (we need to provide users with the data they want)
+
+- As the number of users increases, it becomes less practical to provide high-availability/throughput personalized information
+
+- We need to make trade-offs, based on the problem space (no of users, user usage patterns, distribution of data -- location-based)
 
 % section background_and_content (end)
 
 \section{Technical Detail} % (fold)
 \label{sec:technical_detail}
 
+Need code snippets for:
+
+- Model objects (what we're sorting into buckets)
+
+- Public bucket sorting algorithm
+
 %------------------------------------------------------------------------------
 \begin{center}
 \begin{minipage}{5.5in}%
-\begin{python}[caption={Standard GA Search in Python},label={code:ec_GA}] 
-def GeneticAlgorithm(m, n, fn):
-    # fn is a fitness function to evaluate individuals
-    parent_pop = Population(size=m)
-    t = 0
-    while search_not_finished():
-        offspring_pop = select_and_clone(parent_pop, size=n)
-        do_crossover(offspring_pop)
-        do_mutation(offspring_pop)  
-        evaluate_all(offspring_pop, fn) 
-        parent_pop = offspring_pop
-        t += 1
+\begin{python}[caption={Code Sample},label={code:ec_BS}] 
+
 \end{python}
 \end{minipage}
 \end{center}
