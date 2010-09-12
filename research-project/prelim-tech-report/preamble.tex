@@ -3,6 +3,32 @@
 \usepackage{setspace}
 \usepackage{fontenc}
 
+%-----------------------------------------------------------------------
+% red and blue boxes for drafting notes
+%-----------------------------------------------------------------------
+\definecolor{boxgray}{gray}{0.9}
+
+\newcommand{\mycolorbox}[3]{
+ \vspace{5mm}
+ \noindent
+ \fcolorbox{#1}{#2}{
+   \begin{minipage}[l]{0.95\textwidth}
+     \color{#1}
+     #3
+   \end{minipage}
+ }
+ \vspace{3mm}
+}
+
+\newcommand{\myredbox}[1]{\mycolorbox{red}{boxgray}{#1}}
+\newcommand{\mybluebox}[1]{\mycolorbox{blue}{boxgray}{#1}}
+\newcommand{\mygreybox}[1]{\mycolorbox{black}{boxgray}{#1}}
+\newcommand{\mywhitebox}[1]{\mycolorbox{black}{white}{#1}}
+
+\newcommand{\crumbs}[1]{\myredbox{#1}}
+\newcommand{\excrumbs}[1]{\mybluebox{#1}}
+\newcommand{\draft}[1]{\mygreybox{#1}}
+
 %------------------------------------------------------------------------------
 % setting for displaying python code in its own environment
 %------------------------------------------------------------------------------
