@@ -1,0 +1,33 @@
+%
+%
+%
+%
+%
+%
+%
+\begin{document}
+% Show the title pages
+\pagenumbering{roman}
+
+%\tableofcontents
+%\newpage
+\include{title}
+
+% Set the spacing margin, 1.5 is required by Swinburne University
+\onehalfspacing
+
+\pagenumbering{arabic} \setcounter{page}{1}
+\include{01-intro}
+\include{02-background}
+\include{03-method}
+\include{04-findings}
+\include{05-conclusions}
+\include{appendix}
+
+\setstretch{1.0}
+
+\addcontentsline{toc}{chapter}{References}
+
+\bibliography{./allan}
+
+\end{document}
