@@ -1,7 +1,19 @@
 \usepackage{color}
 \usepackage{textcomp}
 \usepackage{setspace}
-\usepackage{fontenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{glossaries}
+\usepackage{fullpage}
+
+\graphicspath{{figures/}}
+
+% \usepackage[lmargin=2cm,rmargin=2cm,tmargin=2cm,bmargin=2cm]{geometry}
+%DRAFT - less paper
+% \usepackage[lmargin=4cm,rmargin=2cm,tmargin=3cm,bmargin=2cm]{geometry}
+%FINAL 1-sided
+% \usepackage[lmargin=4cm,rmargin=2cm,tmargin=3cm,bmargin=2cm,twoside]{geometry}%FINAL 2-sided
 
 %-----------------------------------------------------------------------
 % red and blue boxes for drafting notes
@@ -33,6 +45,7 @@
 % setting for displaying python code in its own environment
 %------------------------------------------------------------------------------
 \usepackage{listings} %for code listings
+\usepackage[scaled]{beramono} %nicer monospace font for code listing
 
 \renewcommand{\lstlistlistingname}{Code Listings}
 %\renewcommand{\lstlistingname}{Code Listing}% default is 'Listing'
