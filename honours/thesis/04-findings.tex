@@ -1,31 +1,37 @@
 %!TEX root = thesis.tex
-\chapter{Findings}
-\label{chapter:Findings}
+\chapter{Findings} % (fold)
+\label{cha:findings}
 
-\crumbs
+\excrumbs
 {
-Start by re-introducing the findings of others that have performed similar studies (only cover what is closely related to what will be investigated within this chapter) -- provides context/background for the our investigation and allows us to clearly differentiate
+	\textbf{Studies of software evolution have shown that the evolution of software has certain trait}
+	
+	Studies have shown that the evolution of software has recurring traits...
+	
+	- Shows repeating patterns of growth
+	
+	- Metrics show a skewed distribution (concentration of complex classes that are popular and become more popular over time)
+	
+	- But we don't yet know whether these traits are exhibited by evolving vocabulary of the source code
 }
 
-\crumbs{\textbf{TODO: Need to find an appropriate place to identify the method of}}
-
-\crumbs{\cite{Abebe09a} observed that most new identifiers are composed of existing terms, rather than new terms}
-
-\crumbs{\cite{Antoniol07a} observed that the lexicon is more stable than the system as a whole and that changes to the lexicon are unlikely}
-
-\crumbs{Contrast their work to what will be investigated within this chapter}
-
-\crumbs{Identify why this contrast has been applied for our study (i.e. what new and valuable information does it potentially yield)}
-
-\crumbs{Clearly summarise what questions will be addressed within this chapter}
-
-\crumbs{\textbf{TODO: Trim the questions down}}
+\excrumbs
+{
+	\textbf{Previous research of source code vocabulary:}
+	
+	- \cite{Abebe09a} observed that most new identifiers are composed of existing terms, rather than new terms
+	
+	- \cite{Antoniol07a} observed that the lexicon is more stable than the system as a whole and that changes to the lexicon are infrequent and unlikely
+	
+	- Their studies did not examine the distribution profiles describing how application of source code vocabulary is applied across multiple versions
+	
+	- No studies have investigated whether the laws of software evolution apply to vocabulary
+}
 
 \begin{itemize}
 	% Growth-related questions
 	\item What are the trends for growth in total size of the vocabulary across evolving software systems? Does this match findings for the growth of software systems as a whole?
 	\item How stable is the growth of vocabulary across? Does the amount of growth vary from version to version and is there more volatility in earlier versions?
-	\item How does the growth in vocabulary size compare to that of system size?
 	
 	% Distribution-related questions
 	\item What is the distribution of term usage across systems?
@@ -36,13 +42,21 @@ Start by re-introducing the findings of others that have performed similar studi
 	
 	\item What kinds of terms are used with greatest frequency?
 		\begin{itemize}
-			\item Is there a bias towards using either nouns or verbs and is this preserved?
-			\item What do the most frequently used terms refer to?
-			\item Do the most popularly used terms maintain their status across the entire or do new terms take their place?
+			\item What do the most frequently used terms refer to? Are these terms related to the domain or architectural concepts (such as idioms or design patterns)
 		\end{itemize}
+	\item Do the most popular terms remain the most popular or does this change as the software evolves?
 \end{itemize}
 
-\excrumbs{In this chapter, we address the above questions and discuss the implications of our findings. \textbf{TODO: Give a neat stat that summarises how much data we used for the analysis.}}
+\excrumbs
+{
+In this chapter, we:
+
+- Address the above questions
+
+- Use our findings to drive discussion of whether the laws of software evolution can be used to describe evolving vocabulary
+
+- \textbf{Major outcome of research (who does it help and why)}
+}
 
 \section{Growth in Vocabulary} % (fold)
 \label{sec:growth_in_vocabulary}
@@ -52,78 +66,166 @@ Start by re-introducing the findings of others that have performed similar studi
 
 \crumbs{Plots of the total token count against the number of days since the initial version for each version, which is obtained through the extraction of tokens from each version of software}
 
-\crumbs{Regression for the plot is generated to summarise the growth. From this we can determine if the growth is sub-linear, linear or super-linear}
+\crumbs
+{
+\textbf{Keep this brief...can add more later to appendix}
 
-\crumbs{Using these plots we assess the stability of growth by observing how the versions fit this model (i.e. if the residual values closely fit the model, then the growth is stable, otherwise it is volatile) \textbf{TODO: Clean this up, be more precise with how stability is defined}}
+Regression for the plot is generated to summarise the growth. From this we can determine if the growth is sub-linear, linear or super-linear
+}
+
+\crumbs{Using these plots we assess the stability of growth by observing how the versions fit this model (i.e. if the residual values closely fit the model, then the growth is stable, otherwise it is volatile)}
 
 \crumbs{Growth of system size compared to vocabulary size is determined by plotting the system's raw size in the same manner as the vocabulary size and observing similarities in their growth patterns.}
 
 % subsection measuring_growth_in_vocabulary (end)
 
-\subsection{Observations} % (fold)
-\label{sub:observations}
+\subsection{Observations of Growth} % (fold)
+\label{sub:observations_of_growth}
 
 \subsubsection{Patterns of Growth} % (fold)
 \label{ssub:patterns_of_growth}
 
 What are the trends for growth in total size of the vocabulary across evolving software systems? Does this match growth exhibited by evolving software systems as a whole?
 
-\crumbs{Explain how we applied the measurements defined above to assess the patterns of growth}
+Lehman's laws argue that evolving software systems tend to exhibit sub-linear growth rate.  This argument is based on the assumption that as software evolves its complexity increases but the overall effort towards development remains stable. Lehman's studies \cite{Lehman97a} show that increases in complexity are caused both by the size of the system (volumetric complexity) as well as the internal complexity of some of the modules.
 
-\crumbs{Indicate how many of the systems that we analysed were of a particular pattern of growth for each type of growth. Sentence or two or a table.}
+Similarly, the sheer magnitude of a vocabulary impacts the ability of an individual to comprehend the vocabulary in its entirety [\textbf{Note: Need to cite something for this or weaken the argument}]. This would suggest that an individual will increase the size of their vocabulary so as to express themselves effectively, but that the associated volumetric complexity will eventually drive the rate of growth of the vocabulary to decrease steadily.
 
-\crumbs{Highlight the differences in the results for growth patterns. Systems were mostly sub-linear, particular those which were more mature. Some systems show much stronger sub-linearity, to the point where the number of terms being introduced is a very small number.
+In this study, we investigated the growth rate of the vocabulary in order to ascertain if the sub-linear growth rate expectation extends to vocabulary.
 
-Some systems even exhibit a substantial decrease in the total number of tokens as time goes on. We speculate the cause of this may be the removal of functionality that was previously included as part of the main development branch which is now distributed as a separate module.
+To determine the growth rate of vocabulary, we categorised the rate of growth according to the most appropriate regression model that fit the vocabulary size across versions. These possible growth rates, along with their associated implications are highlighted in Table~\ref{tab:vocab_growth_rate_implications}. A \emph{Sub-Linear} growth rate indicates that the vocabulary is unable to sustain growth, possibly due to an inability of developers to manage the linguistic overhead that is associated with introducing a large number of new terms, a characteristic expected of a system in which the core design undergoes refinement, but is conceptually stable. Meanwhile, a \emph{Super-Linear} growth rate would suggest that the system's architecture facilitates extension, possibly through the use of a plugin architecture, allowing new terms to be introduced without impacting the core design of system and introducing complexity.
 
-\textbf{Strongly sub-linear} JChemPaint - flattens out after release at around 1150 days, Jena - Flattens out at after release around 900 has a small jump, then has a couple of large decreases
+\begin{table*}[t]
+\centering
+\begin{tabular}{|p{.23\textwidth}|p{.72\textwidth}|}
+\hline
+{\bf Growth Rate} & {\bf Implications}\\
+\hline
+\hline
+Sub-Linear
+&
+Developers are unable to increase the number of terms, due to the associated complexity that comes through introduction of concepts. This type of growth is expected in systems that do not easily allow extension, and are instead based around a core design that undergoes maintenance and refinement. 
+\\
+\hline
+Super-Linear
+&
+Developers are able to continually increase the rate of term addition while managing the associated linguistic overhead. This type of growth is expected in systems which facilitate extension of functionality without altering the systems' core design (e.g. plug-in architectures).
+\\
+\hline
+Linear
+&
+Developers are able to maintain a consistent rate of introducing new terms.
+\\
+\hline
+\end{tabular}
+\vspace{0.2cm}
+\caption{The possible growth rates that may be exhibited by a vocabulary as it evolves, and the implications that are associated with these growth types.}
+\label{tab:vocab_growth_rate_implications}
+\vspace{-0.2cm}
+\end{table*}
 
-\textbf{Linear} Castor, Groovy, Jasperreports, KoLMafia, JRuby, RSSOwl (one release makes it linear...)
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{Figures/Vocab-AzureusGrowth.pdf}
+\caption{The vocabulary size across the release history of Azureus, exhibiting sub-linear growth. The size of the vocabulary increases greatly throughout the earlier versions (ages 0-600), followed by a long period in which there is a steady rate of growth (ages 800-1700). Beyond this point, there is very little growth in the total size of the vocabulary for the remaining versions (ages 1800-2500)}
+\label{fig:vocab-growth-azureus}
+\end{figure}
 
-\textbf{Super-linear} ASM - small, Cassandra - new and volatile, Tapestry - very strange growth pattern (investigate further!)
+% [[write a short paragraph -- few lines summarising the number of systems that showed sub-linear, linear and super linear vocabulary growth. 37 showed sub-linear, ]]. 
 
-}
+Of the 48 systems analysed, 35 (73\%) of the systems showed a sub-linear vocabulary growth rate, while 13 (27\%) were super-linear. Despite the fact that the sub-linear growth rate is not universal, it was clearly the predominant and most likely growth rate amongst the systems we analysed. This result favours the extension of Lehman's law relating to increasing complexity to an evolving vocabulary.
 
-\crumbs{Chart highlighting a stable, sub-linear growth pattern -- use Azureus for this}
+Although the growth rate of the vocabulary provides us with some insight into how it grows,
+we refined our investigation by combining the this information with the overall system size growth. That is, we wanted to find out if vocabulary growth matches the overall size growth rate of the software system.
 
-\crumbs{Chart highlighting a linear growth pattern -- use JRuby}
+\begin{table*}[t]
+\centering
+\begin{tabular}{|p{.19\textwidth}|p{.19\textwidth}|p{.04\textwidth}|p{.48\textwidth}|}
+\hline
+{\bf Vocabulary} & {\bf System Size} & {\bf \#} & {\bf Implication} \\
+\hline
+\hline
+Sub-Linear
+&
+Sub-Linear
+&
+15
+&
+\\
+\hline
+Sub-Linear
+&
+Linear
+&
+7
+&
+\\
+\hline
+Sub-Linear
+&
+Super-Linear
+&
+1
+&
+\\
+\hline
+Linear
+&
+Sub-Linear
+&
+3
+&
+\\
+\hline
+Linear
+&
+Linear
+&
+1
+&
+\\
+\hline
+Linear
+&
+Super-Linear
+&
+3
+&
+\\
+\hline
+Super-Linear
+&
+Super-Linear
+&
+2
+&
+\\
+\hline
+\end{tabular}
+\vspace{0.2cm}
+\caption{The number of systems demonstrating particular combinations of vocabulary and system size growth rates, along with the implication for systems possessing these combinations.}
+\label{tab:growth_rate_results}
+\vspace{-0.2cm}
+\end{table*}
 
-% subsubsection patterns_of_growth (end)
+Plotting the system size (measured in the number of bytes that make up the version) and determine the most appropriate fit revealed a strong similarity in the growth of system size and vocabulary. Overall, 18 (56\%) of the systems were found to have a rate of growth of vocabulary that matched that of the system size, while 14 (44\%) were shown to have a mismatch in growth rates. Of the systems that were found to have matching growth rates, there was a noticeable similarity between the system size and vocabulary in terms of how both are impacted across versions. This similarity is illustrated in Figure~\ref{fig:vocab-growth-pmd}, which shows a comparison between the vocabulary and system size growth rates for PMD.
 
-\subsubsection{Growth Stability} % (fold)
-\label{ssub:growth_stability}
+Our findings that there is often a match in growth trends for the vocabulary and system size indicates that the absolute size growth exhibited by a system is a somewhat reliable predictor of the kind of growth that can be expected of the vocabulary.
 
-How stable is the growth of vocabulary across? Does the amount of growth vary from version to version and is there more volatility in earlier versions?
+Despite the similarities that are present, growth in system size does not serve as a direct indicator of how the vocabulary will go. While it is apparent that the two follow roughly similar patterns, there appears to be some variation from version to version.
 
-% subsubsection growth_stability (end)
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{Figures/Vocab-PMDGrowth.pdf}
+\caption{PMD vocabulary growth.}
+\label{fig:vocab-growth-pmd}
+\end{figure}
 
-\subsubsection{Vocabulary Size vs. System Size} % (fold)
-\label{ssub:vocabulary_size_vs_system_size}
+\textbf{Discussion}
 
-How does the growth in vocabulary size compare to that of system size? Is there any indication that the two are related or are they on different tangents?
+Software system vocabularies appear to, in general, be reaching a level of maturity at a particular stage of their evolution, as shown by the results showing predominately sub-linear growth. This suggests, that the further growth of the software is being supported by core concepts that are already present within the vocabulary. However, in cases in which the vocabulary was showing growth that was not sub-linear, this was matched by a similar growth rate for system size. The implication of this is that new terms are being added to the vocabulary in order to support functional growth that is evident from the increase in system size.
 
-\crumbs{Table comparing growth types for system size and terms}
-
-% subsubsection vocabulary_size_vs_system_size (end)
-
-% subsection observations (end)
-
-% \crumbs{How substantial is the growth in vocabulary over lifetime of the system? Is the growth in the vocabulary stable or are their signs of volatility from version to version? How does the growth in terms of vocabulary compare to the growth in terms of system size?}
-
-\crumbs{Chart comparing a stable and unstable growth pattern -- use Azureus and Hibernate}
-
-\crumbs{Speculate as to what is most likely the contributing factor to 
-identified growth patterns (relating to stability of growth)}
-
-\crumbs{Speculate as to why most systems are exhibiting sub-linear growth, while some are linear or even super-linear. This could be related to age of the software, number of releases, architecture, etc. Are there are any cases in which the system size is clearly following vocabulary size? Is this common? Reason as to what the relation (if any) between the two may be and why they may be fundamentally different.}
-
-\textbf{TODO: Need to generate growth plots for system size based on bytecode, rather than class count (or some other metric)}
-
-\crumbs{Use example of late total token growth for Hibernate -- this growth is caused by introduction of an associated module, which was included as part of the core distribution. Can probably reason that this kind of growth may not be as significant as growth which is including functionality that has been only just been developed. \textbf{TODO: See if more insight can be gained into what contributes to large jumps in growth and general instability in growth -- is this something that is caused by process (e.g. the introduction of existing term-rich modules or the introduction of new functionality, or does it occur through refinement. Note: This level of investigation is most likely out of scope, though we can probably speculate in order to provoke)}}
-
-\crumbs{Explain the implications of these findings -- should we be worried about the rate at which vocabulary tends to grow? Well, examining a broad picture of growth alone does not really give us much insight into specifics of the vocabulary. Why should we care about total term growth if none of the terms accounting for growth form part of the vocabulary (i.e. are semantically rich terms that require consistent understanding and therefore require documentation)?}
-
-\crumbs{To get a better idea of this, we really need to examine the application of the terms that make up the vocabulary. This will be a nice segue into the following chapter, which will examine just that}
+Predictably, based on what we know of how software systems evolve, the growth of vocabulary is more substantial in earlier versions of software. This puts an emphasis on the need to devote efforts to documenting vocabulary for early releases. \textbf{Note: This alone is not enough to give an indication of when and what needs to be documented (e.g. some versions may exhibit smaller amounts of growth, but have a higher density of terms that have rich meaning within the vocabulary). However, the introduction of the number of terms that could potentially mean something is decreasing.}
 
 \section{Distribution of Vocabulary} % (fold)
 \label{sec:distribution_of_vocabulary}
@@ -137,191 +239,217 @@ identified growth patterns (relating to stability of growth)}
 
 % subsection measuring_distribution_of_vocabulary (end)
 
-\subsection{Observation} % (fold)
-\label{sub:observation}
+\subsection{Distribution Profiles} % (fold)
+\label{sub:distribution_profiles}
 
-\subsubsection{Distribution Profiles} % (fold)
-\label{ssub:distribution_profiles}
+\crumbs{Humans like to deal with a small number of abstractions, rather than lots. This is the case with software systems, where developers will extend the functionality of existing concepts, rather than build new ones (cite Raj's work, etc.).}
 
-% subsubsection distribution_profiles (end)
+In this study, we investigated the how term usage within source code is distributed, to determine whether there is a tendency for developers to use a subset of the vocabulary with greater frequency than the rest of the vocabulary.
 
-\subsubsection{Distribution of Term Usage} % (fold)
-\label{ssub:distribution_of_term_usage}
+To determine how the vocabulary was distributed across the system, we plotted the frequency distribution for the number of occurrences for each term within the source code. We used a threshold value of 100 occurrences as a cut-off point to indicate that a term was used with an extremely high frequency.
 
-% subsubsection distribution_of_term_usage (end)
+\crumbs{Some summative statistics about the systems analysed}
 
-\subsubsection{Types of Terms} % (fold)
-\label{ssub:types_of_terms}
-\textbf{TODO: Think of a much better title than this}
+\crumbs{Need to put some numbers in the following paragraph -- comparative \%s of number of terms over threshold of 100?}
 
-% subsubsection types_of_terms (end)
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{Figures/Vocab-GroovyFreqDist.pdf}
+\caption{Groovy vocabulary frequency distribution.}
+\label{fig:vocab-freq-dist-groovy}
+\end{figure}
 
-\subsubsection{Popular Terms} % (fold)
-\label{ssub:popular_terms}
+Each of the systems analysed exhibited a remarkably similar distribution. The tendency was towards the usage of a substantial proportion of terms less than 5 times throughout the source code. Further along the distribution profiles, a far smaller number of terms are used from 30-40 times. A small amount of terms were used in excess of the defined threshold value of 100.
 
-% subsubsection popular_terms (end)
+Observing the frequency distribution across the entire history, one can observe \textbf{[How? Need some that demonstrates this clearly...have a version 1 and version n comparison?]} that a similar distribution profile is present from the initial versions of the software systems and is preserved as the system evolves. It is interesting to note, however, that the most noticeable trend in terms of changes to the distribution profile over time is the continual increase in the number of terms used only a very small number of times (1-5). The indication of this is that developers are not averse to the introduction of a lot of new terms, provided they will only be used a limited number of times. In contrast to this, there is also a consistent increase in the number of terms that exceed the occurrence threshold of 100. As the number of terms falling within the range of 5-99 occurrences demonstrates minor fluctuations over time, it appears that terms within this range, particularly towards the higher end, are being re-used in subsequent versions, causing the number of times they occur to exceed the threshold value of 100. The tendency of developers towards re-use of popular terms in discussed further in Section~\ref{sec:rich_get_richer}
 
-% subsection observation (end)
+\crumbs{The implications of this distribution profile is that terms that there is a predictable pattern as to how vocabulary are established within source code.}
 
-\crumbs{Frequency distribution charts which show the similarity in application of terms across systems}
+\crumbs{Is there are similarity between NL distribution and source vocabulary distribution?}
 
-\crumbs{Discuss why the vocabulary is consistently distributed in the same manner across systems}
+% \crumbs{This is an indication that once terms become popular they are highly unlikely to lose much of their popularity and that how vocabularies are distributed seems to be unavoidable}
 
-\crumbs{Might be a nice time to bring up Zipf's law here}
+% \crumbs{Discuss why the vocabulary is consistently distributed in the same manner across systems}
 
-\crumbs{Gini charts which show the trend for term wealth distribution over time}
+% \crumbs{Discuss cases in which there are versions that match in Gini vs. Growth. Reason as to what this might be attributed to. Is it safe to say that in cases where there is this parallel, these versions are significant in terms of the vocabulary. What explanations may or may not support this reasoning?}
 
-\crumbs{Highlight the continually increasing Gini over time across systems}
-
-\crumbs{Discuss cases in which there are versions that match in Gini vs. Growth. Reason as to what this might be attributed to. Is it safe to say that in cases where there is this parallel, these versions are significant in terms of the vocabulary. What explanations may or may not support this reasoning?}
-
-\section{Implications} % (fold)
-\label{sec:implications}
-
-\crumbs{Open up the discussion here to go into further detail for what was covered in the previous sections. What could our findings mean and why should people care?}
-
-\crumbs{Discuss the findings of growth and distribution in the same context. What information were we able to reveal about the combination of these two facets that is meaningful to people?}
-
-% section implications (end)
+% subsection distribution_profiles (end)
 
 % section distribution_of_vocabulary (end)
 
-%%%%% Notes %%%%%
+\section{Rich Get Richer} % (fold)
+\label{sec:rich_get_richer}
 
-% \mybluebox
-% {Re-introduce existing work that investigated the growth of vocabulary \cite{Abebe09a}}
-% 
-% \mybluebox{Comment on the general trends for systems in terms of growth}
-% 
-% \mybluebox{Point out any abnormalities in terms of growth late in the development}
-% 
-% \mybluebox{Speculate as to why these abnormalities have arisen ... are they common? Major releases?}
-% 
-% \mybluebox{Need some examples where growth is prominent -- outline what we think it causing the growth here}
-% 
-% \mybluebox{Where there is a noticeably large amount of growth, what is contributing to the growth (modules...)? Is there much there that would need documentation}
-% 
-% \mybluebox{What is driving the growth? How much of the growth is attributed to increases in system size (i.e. introduction of new classes/modules)? Is the growth related contained to a few modules or is it spread throughout the system?}
-% 
-% \mybluebox{How much of the increase in token counts represents popularly used terms...i.e. terms we should probably document?}
-% 
-% % section growth_in_vocabulary (end)
-% 
-% \section{Distribution of Term Usage} % (fold)
-% \label{sec:distribution_of_term_usage}
-% 
-% \mybluebox{How does the distribution start}
-% 
-% \mybluebox{How does it change?}
-% 
-% \mybluebox{Increasing number of terms are beyond our max threshold, but there is a big gap in the middle with very small number of tokens accounting for those occurrence counts}
-% 
-% % section distribution_of_term_usage (end)
-% 
-% \section{Rich Terms} % (fold)
-% \label{sec:rich_terms}
-% 
-% \mybluebox{How do rich terms evolve over time?}
-% 
-% \mybluebox{Most of the rich terms start relatively rich and get richer}
-% 
-% \mybluebox{Some terms start rich and don't get richer}
-% 
-% \mybluebox{Some terms start poor and get substantially richer}
-% 
-% \mybluebox{A small amount of terms lose wealth}
-% 
-% \mybluebox{What kind of terms are commonly rich?}
-% 
-% \mybluebox{What kind of terms increase/decrease/start big/start small?}
-% 
-% \mybluebox{What is the cause/implications of these trends/patterns}
-% 
-% % section rich_terms (end)
-% 
-% \section{Laws of Software Evolution} % (fold)
-% \label{sec:laws_of_software_evolution}
-% 
-% \mybluebox{Use our findings to assess the applicability of Lehman's laws...can refer to notes on this from weekly meetings in May}
-% 
-% \subsection{Continuing Change} % (fold)
-% \label{sub:continuing_change}
-% 
-% \mybluebox{Gini value continues to increase over time, so does frequency distribution}
-% 
-% \mybluebox{What is causing this?}
-% 
-% \mybluebox{What are the implications of this?}
-% 
-% % subsection continuing_change (end)
-% 
-% \subsection{Increasing Complexity} % (fold)
-% \label{sub:increasing_complexity}
-% 
-% \mybluebox{Show context of top terms}
-% 
-% \mybluebox{Is there an indication there may be a strategy to manage vocabulary?}
-% 
-% % subsection increasing_complexity (end)
-% 
-% \subsection{Self Regulation} % (fold)
-% \label{sub:self_regulation}
-% 
-% \mybluebox{Seems to be contained -- is it sufficient? How can we gauge this?}
-% 
-% % subsection self_regulation (end)
-% 
-% \subsection{Conservation of Stability} % (fold)
-% \label{sub:conservation_of_stability}
-% 
-% \mybluebox{Refer to b-metric values}
-% 
-% \mybluebox{How stable is it and why is it stable? -- distribution is staying the same}
-% 
-% % subsection conservation_of_stability (end)
-% 
-% \subsection{Conservation of Familiarity} % (fold)
-% \label{sub:conservation_of_familiarity}
-% 
-% \mybluebox{Gini values continuing up...popular terms are becoming even more popular}
-% 
-% % subsection conservation_of_familiarity (end)
-% 
-% \subsection{Continuing Growth} % (fold)
-% \label{sub:continuing_growth}
-% 
-% \mybluebox{Continually growing, though in almost all cases the growth is sub-linear}
+Does the wealth of term usage within the vocabulary remain the same throughout evolution or do wealthy terms get continually richer as the software evolves?
 
-% subsection continuing_growth (end)
+Lehman's laws say familiarity will be conserved throughout evolution, which ensures the direction of the software is maintained based on what is familiar to those responsible for its development.
 
-% section laws_of_software_evolution (end)
+\crumbs{Important to preserve familiarity within vocabulary/source code as developers will change which pieces of code they will be working on...they need to ensure that terms are used consistently and re-used where appropriate}
 
-% \section{Stability of the Vocabulary} % (fold)
-% \label{sec:stability_of_the_vocabulary}
-% 
-% \textbf{What is the nature of change for the vocabulary?}
-% \textbf{What is the likelihood of change in the vocabulary and how significant is the change from release to release}
-% 
-% % section stability_of_the_vocabulary (end)
+% Vocabulary represents the most comprehensible aspect of the source code for developers. Therefore, it is important to preserve vocabulary that is part of concepts that make up the system.}
 
-% \section{Term Re-Use} % (fold)
-% \label{sec:term_re_use}
-% 
-% \textbf{Popular terms being continually re-used}
-% \textbf{Existing terms being applied to new classes/modules -- do an investigation to find out what they are being used for -- these sorts of terms are more representative of a common vocab, rather than describing domain concepts}
-% 
-% % section term_re_use (end)
+To determine whether developers favour the re-use of terms that are already popularly used, we examined how the distribution of wealth changes throughout evolution.
 
-% \section{New Concepts} % (fold)
-% \label{sec:new_concepts}
-% 
-% \textbf{Some terms are being introduced at later stage with a large number of occurrences}
-% 
-% % section new_concepts (end)
+\crumbs{We investigated whether the distribution of vocabulary became more skewed over time (thus indicate term re-use and familiarity)}
 
-% \section{Term Volatility} % (fold)
-% \label{sec:term_volatility}
-% 
-% \textbf{Point out any atypical growth patterns/changes in usage of terms -- e.g. terms that start out with small no. of occurrences and increase at regular intervals, terms that decrease in usage or ceased to be used at all, terms that exhibit burst in growth across particular versions}
-% 
-% % section term_volatility (end)
+\crumbs{Used the Gini coefficient to observe how wealth of term usage is distributed throughout the vocabulary}
+
+"A low Gini coefficient indicates a relatively equal wealth distribution in a given population, with 0 denoting a perfectly equal wealth distribution (i.e., everybody has the same wealth). A high Gini coefficient, on the other hand, signifies a very uneven distribution of wealth, with a value of 1 signalling perfect inequality in which one in- dividual possesses all of the wealth in a given population." -- \textbf{Re-word and cite Raj's work using Gini here...}
+
+Across of the systems, in each version, Gini values fall between 0.6-0.88. These figures generally increase in small amounts over time. An example typical change of Gini through evolution is shown for Groovy in Figure~\ref{fig:vocab-gini-groovy}. Rarely do Gini values change by a significant amount (> 4\%). Latest version values are all above 0.7 and in some cases ~0.85. This indicates that in some cases there are a small number of terms that continue to be re-used heavily, while an increasingly large number are hardly used at all. The bounded Gini values suggest that there is a limit to the amount that rich terms can be used and that the wealth of terms within the vocabulary must not be too concentrated.
+
+\crumbs
+{
+Cover some of the more interesting Gini findings here:
+
+- Only 13 systems demonstrated a decrease in Gini across versions that was above 0.01. Of those 13 systems, only 2 (Jetty and Tapestry) had a decrease that exceeded 0.04, a statistically signficant results.
+
+Most increases in Gini were by far less than 0.04, however there were some exceptions to this:
+
+ant: 0.06369188197063902 (2, 97)
+
+axis: 0.06884638731906056 (23, 2555)
+
+hsqldb: 0.05640940134193073 (21, 2839)
+
+jetty: -0.04525546902999622 (13, 2681)
+
+jetty: 0.04449631971116941 (17, 4184)
+
+rssowl: 0.04789512032057741 (2, 168)
+
+rssowl: 0.05992713617327339 (14, 2212)
+
+tapestry: -0.04891624497153557 (13, 1576)
+
+webwork: 0.05243274394700814 (10, 649)
+
+\textbf{Should include some investigation here to indicate what has caused the relatively big changes...1-2 systems should do -- Jetty would likely be the most interesting, since it has a fairly big decrease, followed by an equally large increase}
+
+}
+
+\crumbs{Our findings indicate that the rich do get richer as a software system evolves. The high Gini values shown in more recent versions indicate that there are a small set of terms that are fundamental to the vocabulary present within the source code, and will inevitably be re-used. However, as these values seem to be bounded, we postulate that there are terms within the vocabulary that will see occasional heavy re-use, despite not being a core component of the vocabulary, which makes the richest terms relatively less wealthy.}
+
+% \crumbs{It seems inevitable that the rich terms will be continually used. This means that choosing the right terms (consistent and comprehensible) to become rich is important, as they will only gain greater momentum as time goes on.}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{Figures/Vocab-GroovyGini.pdf}
+\caption{Groovy term Gini.}
+\label{fig:vocab-gini-groovy}
+\end{figure}
+
+% section rich_get_richer (end)
+
+\section{Frequency vs. Age} % (fold)
+\label{sec:frequency_vs_age}
+
+Does the age of a term have an influence on the likelihood is used? Do new features being introduced result in new supporting vocabulary that is used heavily or is there a tendency to re-use vocabulary that is already there?
+
+\crumbs{Investigated whether there is a correlation between the age of a term and it's likelihood for re-use}
+
+\crumbs{Implications of correlation (or inverse, or lack thereof) -- table}
+
+\crumbs{Found that there were more older terms that were used most frequently, but that a few had been introduced along the way and seen a good amount of usage.}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{Figures/Vocab-GroovyFrequencyAge.pdf}
+\caption{Groovy vocabulary freq-age scatter.}
+\label{fig:vocab-freqage-groovy}
+\end{figure}
+
+\crumbs{\textbf{Histogram}}
+
+\crumbs
+{
+Findings are that some systems demonstrate a stronger correlation between the age of a term and it's likelihood of being re-used
+
+\textbf{What is causing this?}
+
+\textbf{Include results from Raj's analysis here}
+}
+
+This indicates that vocabulary is not entirely established from the start and that new terms can be introduced and used heavily. This highlights the importance of watching for big changes in vocabulary as time goes on to ensure that new concepts are identified and dealt with appropriately. While the very core concepts are maintained, there are clearly important elements of the vocabulary introduced over time, important enough to warrant some attention.
+
+Likely an importance and re-usability based on the role of the term within the vocabulary. Some terms introduced early are introduced with lower significance than other terms and, accordingly, are subject to lesser or no re-use.
+
+% section frequency_vs_age (end)
+
+\section{Mining the Domain Model} % (fold)
+\label{sec:mining_the_domain_model}
+
+What do the most frequently used terms within vocabularies refer to? Are they primarily pertaining to the software's domain, its design elements or something entirely different?
+
+Best practices in software development suggest that programmers will write code that is communicative of the purpose and intention of the software system. When practising object-oriented programming, there are general guidelines that suggest how developers should reason about the design of their application, which allows them to build a solution around the problem they are trying to solve. These guidelines include the usage of a domain model, which captures the main entities within the problem space, as well as design patterns and idioms that represent re-usable concepts that can be applied to tailoring a system's architecture to suit the problem.
+
+While these guidelines are in place to aid developers in the design and implementation of their applications, there is no governance with regard to how developers apply the vocabulary associated with them within their source code. While we can speculate that developers make use of domain related terms, it is uncertain as to whether developers actually utilise the vocabulary associated with these guidelines to good effect when writing code.
+
+To determine whether developers effectively use domain-related terms within their source code's vocabulary, we extracted the 15 most popular terms from the latest version of each of the systems.
+
+\subsection{Case Studies} % (fold)
+\label{sub:case_studies}
+
+\subsubsection{Hibernate} % (fold)
+\label{ssub:hibernate}
+
+\crumbs{Composed of \emph{n} terms overall.}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{Figures/Vocab-HibernatePopular.pdf}
+\caption{Hibernate most popular terms.}
+\label{fig:vocab-popular-terms-hibernate}
+\end{figure}
+
+\crumbs{x of the most popular terms refer to domain-related concepts}
+
+\crumbs{Comment on the usage of popular terms over time...highlight any terms that were introduced in later versions or those that were less popular and gained substantial popularity to become the most popular.}
+
+% subsubsection hibernate (end)
+
+\subsubsection{Struts} % (fold)
+\label{ssub:struts}
+
+\crumbs{Composed of \emph{n} terms overall.}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{Figures/Vocab-StrutsPopular.pdf}
+\caption{Struts most popular terms.}
+\label{fig:vocab-popular-terms-struts}
+\end{figure}
+
+\crumbs{x of the most popular terms refer to domain-related concepts}
+
+\crumbs{Comment on the usage of popular terms over time...highlight any terms that were introduced in later versions or those that were less popular and gained substantial popularity to become the most popular.}
+
+% subsubsection struts (end)
+
+\subsubsection{Avasa} % (fold)
+\label{ssub:avasa}
+
+\crumbs{Composed of \emph{n} terms overall.}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{Figures/Vocab-StrutsPopular.pdf}
+\caption{Struts most popular terms.}
+\label{fig:vocab-popular-terms-struts}
+\end{figure}
+
+\crumbs{x of the most popular terms refer to domain-related concepts}
+
+\crumbs{Comment on the usage of popular terms over time...highlight any terms that were introduced in later versions or those that were less popular and gained substantial popularity to become the most popular.}
+
+% subsubsection avasa (end)
+
+% subsection case_studies (end)
+
+\crumbs{Implications of this is that the domain model entities are well-represented within source code -- this is encouraging...indicates that developers favour heavy usage of the most conceptually rich terms within their source code}
+
+Interestingly, the usage of the most popular terms does not seem to increase at a constant rate across all versions. The results indicate that the usage of a term is more likely to increase in small bursts across separate versions. We postulate that this may coincide with versions in which more substantial change is occurring, which is reflected by relatively large increase in the usage of popular terms. In versions in which this is not the case, we suggest that more localised changes are occurring (i.e. changes that occur within existing classes and methods, that would not result in an increase in the number of classes, methods or fields which are the level of abstractions for which we consider terms to be contributing towards the vocabulary).
+
+% section mining_the_domain_model (end)
+
+% chapter findings (end)

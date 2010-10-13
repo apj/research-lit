@@ -1,0 +1,321 @@
+\documentclass{article}
+
+\include{preamble}
+
+\title{Is Google App Engine a Viable Platform for Large-Scale Social Networking Applications?}
+\author{Allan Jones}
+\begin{document}
+	\maketitle
+
+%------------------------------------------------------------------------------
+%%%%% Abstract
+%------------------------------------------------------------------------------
+\begin{abstract}
+
+Google App Engine presents a rich offering for developers looking to build large-scale applications that alleviates the associated complexity and high-cost of establishing the necessary infrastructure. While the platform imposes no limitations on the sorts of large-scale applications can be built, its viabilities across the various types of applications that could conceivably be considered large-scale is not known. In this report, we investigate the viability of using Google App Engine as a platform for large-scale social networking applications. The results indicate that, in its current state, Google App Engine has satisfactory content delivery performance, but has not yet reached maturity in terms of the write performance required for social networking traffic.
+
+\end{abstract}
+
+%------------------------------------------------------------------------------
+%%%%% Introduction
+%------------------------------------------------------------------------------
+\section{Introduction} % (fold)
+\label{sec:introduction}
+
+Large-scale applications often require substantial amounts of processing power and resources in order to perform the tasks that they were designed for. Depending upon how significant a scale an application is required to operate on, the provision of extra resources that support increased scalability may come in the form of upgrades to the hardware upon which it operates or even distribution across a greater number of processing units.
+
+Establishing the infrastructure to allow an application to perform effectively on a large-scale can be a complex task, requiring experimentation with different hardware and software configurations to determine what is appropriate for a specific application at a given scale. This complexity increases when the application is subject to pressures other than just that of fast performance, such as reliability, redundancy and security. Additionally, the cost of setting up an infrastructure can be quite substantial. This presents challenges to those who lack the financial capacity to establish the kind of infrastructure required for the applications they wish to build.
+
+Organisations that offer infrastructure as a service (IaaS), such as Google App Engine and Amazon EC2, are emerging as a solution to alleviate the difficulty and cost associated with establishing the infrastructure for large-scale applications.
+
+\crumbs{They do this being doing what they know -- build large-scale apps...they have large data centers and proven track record in being able to handle these kinds of problems}
+
+ % remove the complexity of building this infrastructure from scratch...they offer x, y, z benefits to developers looking to build large-scale applications.
+
+\crumbs
+{
+	These technologies are still fairly young and have not yet seen widespread adoption...
+	
+	Implementation of an infrastructure can be very specific to a given application, allowing it to be optimised for the types of processing that the application is to perform.
+	
+	Because of this, it is uncertain whether these kinds of out-of-the-box infrastructures are suitable to all flavours of large-scale applications.
+}
+
+\crumbs
+{
+	Large social networking applications are an example of a large-scale application that requires a suitable infrastructure to handle the necessary processing and data storage
+}
+
+\crumbs
+{
+	- In this report, we investigate the viability of using GAE as an infrastructure for handling social networking applications.
+	
+	- We assess the viability by measuring the time/computation required to:
+	
+	- Retrieve content (read)
+	
+	- Organise content for reads (write)
+}
+
+% section introduction (end)
+
+%------------------------------------------------------------------------------
+%%%%% Methodology
+%------------------------------------------------------------------------------
+\section{Methodology} % (fold)
+\label{sec:methodology}
+
+\crumbs
+{
+\textbf{Our primary focus is to measure the performance of}
+
+- Delivery of data
+
+- Organisation of data
+
+}
+
+\crumbs
+{
+\textbf{What measures do we have?}
+
+\emph{Measures:}
+
+\textbf{TODO: Need an explanation of what these terms mean in this context}
+
+- Real-time
+
+- CPU processing time
+
+- API CPU processing time
+
+\emph{Applied to:}
+
+- Organisation of the data to speed up retrieval
+
+- Time taken to fetch data to be sent to a consumer
+
+}
+
+\crumbs
+{
+\textbf{Show the Google App Engine quota details...will illustrate what bang devs get for their buck on GAE}
+}
+
+\crumbs
+{
+	\textbf{What are we expecting for these values in order to determine if it is viable?}
+	
+	- Times that do not exceed a reasonable quota amount
+	- We used the free quota amount? Is the reasonable given our intent?
+}
+
+\crumbs
+{
+	\textbf{What are we using to generate these figures?}
+	
+	- Developed a testbed back-end based on a location-based social networking application \textbf{TODO: Cite technical report}.
+	
+	- Back-end batch processes incoming message queue and organises the messages according to a location.
+	
+	- This processing is initiated as a request to Google App Engine, with each request organising a number of messages.
+	
+	- Scheduled cron jobs initiate a number of requests per minute, meaning that we process n messages per request, for a number of requests.
+	
+	- Testing was based on an approximation of traffic for a user-base of 50,000 active users
+}
+
+\crumbs
+{
+	\textbf{What is the data that will be thrown at the back-end to test the measures that have been defined}
+	
+	- Test performance of GAE by:
+	
+	- Changing the number of messages to deliver (for read capacity) and measuring the amount of computation required (according to GAE real-time/CPU/API processing time)
+	
+	- Changing the number of messages to process per request and the number of requests (for organisation capacity) and measuring the amount of computation required (according to GAE real-time/CPU/API processing time)
+}
+
+% section methodology (end)
+
+%------------------------------------------------------------------------------
+%%%%% Results
+%------------------------------------------------------------------------------
+\section{Results} % (fold)
+\label{sec:results}
+
+\crumbs{\textbf{Table for performance of reads for delivery}}
+
+\begin{table*}[t]
+\centering
+\begin{tabular}{|p{.19\textwidth}|p{.19\textwidth}|p{.19\textwidth}|p{.19\textwidth}|}
+\hline
+{\bf Traffic} & {\bf Real-Time} & {\bf CPU Time} & {\bf API CPU Time} \\
+\hline
+\hline
+\emph{w} amount of traffic
+&
+1ms
+&
+1ms
+&
+1ms
+\\
+\hline
+\emph{x} amount of traffic
+&
+1ms
+&
+1ms
+&
+1ms
+\\
+\hline
+\emph{y} amount of traffic
+&
+1ms
+&
+1ms
+&
+1ms
+\\
+\hline
+\emph{z} amount of traffic
+&
+1ms
+&
+1ms
+&
+1ms
+\\
+\hline
+\end{tabular}
+\caption{Results for processing time for delivering data.}
+\label{tab:data_delivery_results}
+\end{table*}
+
+\crumbs{Observations for \emph{w} amount of traffic}
+
+\crumbs{Observations for \emph{x} amount of traffic}
+
+\crumbs{Observations for \emph{y} amount of traffic}
+
+\crumbs{Observations for \emph{z} amount of traffic}
+
+\crumbs{Summary of observations}
+
+\crumbs{\textbf{Table for performance of organisation}}
+
+\begin{table*}[t]
+\centering
+\begin{tabular}{|p{.19\textwidth}|p{.19\textwidth}|p{.19\textwidth}|p{.19\textwidth}|}
+\hline
+{\bf Traffic} & {\bf Real-Time} & {\bf CPU Time} & {\bf API CPU Time} \\
+\hline
+\hline
+\emph{w} amount of traffic
+&
+1ms
+&
+1ms
+&
+1ms
+\\
+\hline
+\emph{x} amount of traffic
+&
+1ms
+&
+1ms
+&
+1ms
+\\
+\hline
+\emph{y} amount of traffic
+&
+1ms
+&
+1ms
+&
+1ms
+\\
+\hline
+\emph{z} amount of traffic
+&
+1ms
+&
+1ms
+&
+1ms
+\\
+\hline
+\end{tabular}
+\caption{Results for processing time for organising data.}
+\label{tab:data_organisation_results}
+\end{table*}
+
+\crumbs{Observations for \emph{w} amount of traffic}
+
+\crumbs{Observations for \emph{x} amount of traffic}
+
+\crumbs{Observations for \emph{y} amount of traffic}
+
+\crumbs{Observations for \emph{z} amount of traffic}
+
+\crumbs{Summary of observations}
+
+% section results (end)
+
+%------------------------------------------------------------------------------
+%%%%% Discussion
+%------------------------------------------------------------------------------
+\section{Discussion} % (fold)
+\label{sec:discussion}
+
+\crumbs{Reads are very fast. Refer to the results.}
+
+\crumbs{Writes are generally slow, and become very costly once the scale is increased.}
+
+% section discussion (end)
+
+%------------------------------------------------------------------------------
+%%%%% Related Work
+%------------------------------------------------------------------------------
+
+\section{Related Work} % (fold)
+\label{sec:related_work}
+
+% section related_work (end)
+
+%------------------------------------------------------------------------------
+%%%%% Future Work
+%------------------------------------------------------------------------------
+
+\section{Future Work} % (fold)
+\label{sec:future_work}
+
+\crumbs{\textbf{Try different types of applications}}
+
+\crumbs{\textbf{Re-evaluation of Google App Engine once it has reached a greater level of maturity}}
+
+\crumbs{\textbf{Exploration of ways Google App Engine can be optimised to be more suited to specific }}
+
+\crumbs{\textbf{Investigation of alternative platforms}}
+
+% section future_work (end)
+
+%------------------------------------------------------------------------------
+%%%%% Conclusion
+%------------------------------------------------------------------------------
+\section{Conclusion} % (fold)
+\label{sec:conclusion}
+
+\crumbs{Good for delivery of content, handling a large amount of data}
+
+\crumbs{Not really suited for applications with consistently heavy write traffic}
+
+\crumbs{Google will push to improve this to make }
+
+% section conclusion (end)
+
+\end{document}

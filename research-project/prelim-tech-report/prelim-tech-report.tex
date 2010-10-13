@@ -22,7 +22,7 @@
 
 % \crumbs{Cite something that covers online marketplaces vs. "distributed applications"? What is the proper term for this?}
 
-The popularity of web-enabled mobile devices has seen a significant increase in the last couple of years. This rise in popularity can be largely attributed to the the success of online marketplaces, such as the Apple App Store\footnote{Apple App Store: \url{http://www.apple.com/iphone/apps-for-iphone/}} and Android Market\footnote{Android Market: \url{http://www.android.com/market/}}. These online marketplaces provide mobile device owners a means of discovering and acquiring applications that is centralised, allowing applications to be consumed with greater ease than the traditional distributed model.
+The popularity of web-enabled mobile devices has seen a significant increase in the last couple of years. This rise in popularity can be largely attributed to the the success of online marketplaces, such as the Apple App Store\footnote{Apple App Store: \url{http://www.apple.com/iphone/apps-for-iphone/}} and Android Market.\footnote{Android Market: \url{http://www.android.com/market/}} These online marketplaces provide mobile device owners a means of discovering and acquiring applications that is centralised, allowing applications to be consumed with greater ease than the traditional distributed model.
 
 Amongst the most downloaded and used applications available through these online marketplaces are those which utilise already well established social networking services, such as Facebook and Twitter. This has led to a substantial increase in the amount of traffic for these services, as users are no longer required to be at a computer in order to use them.
 
@@ -45,7 +45,7 @@ This report introduces a prototype mobile location-based social networking appli
 \subsection{Prototype Mobile Application} % (fold)
 \label{sub:prototype_mobile_application}
 
-As a starting point for developing the data organisation strategy, a prototype mobile application was created. The application was built using the Apple iOS SDK\footnote{iOS SDK: \url{http://developer.apple.com/devcenter/ios/}}, which operates on the iPhone and iPad devices developed by Apple. The purpose of the application was to model the usage of a social networking service and to act as a producer and consumer of data stored on a server. The following sections provide an overview of the prototype application, including its primary function and the data model upon which it is built.
+As a starting point for developing the data organisation strategy, a prototype mobile application was created. The application was built using the Apple iOS SDK,\footnote{iOS SDK: \url{http://developer.apple.com/devcenter/ios/}} which operates on the iPhone and iPad devices developed by Apple. The purpose of the application was to model the usage of a social networking service and to act as a producer and consumer of data stored on a server. The following sections provide an overview of the prototype application, including its primary function and the data model upon which it is built.
 
 \subsubsection{How the Application Works} % (fold)
 \label{ssub:how_the_application_works}
@@ -112,9 +112,9 @@ In the case of the prototype, there are two factors of adjacency for messages, \
 
 \subsubsection{GeoModel} % (fold)
 
-To determine the geospatial regions by which messages were grouped, the GeoModel API was utilised, the purpose of which is to allow indexing and querying of geospatial data within Google App Engine \footnote{GeoModel API: \url{http://code.google.com/p/geomodel/}}. The API provides a geospatial representation of the earth that is similar to that of geohashing \footnote{Geohashing: \url{http://en.wikipedia.org/wiki/Geohash/}}.
+To determine the geospatial regions by which messages were grouped, the GeoModel API was utilised, the purpose of which is to allow indexing and querying of geospatial data within Google App Engine.\footnote{GeoModel API: \url{http://code.google.com/p/geomodel/}} The API provides a geospatial representation of the earth that is similar to that of geohashing.\footnote{Geohashing: \url{http://en.wikipedia.org/wiki/Geohash/}}
 
-The API represents the world as a rectangular 4x4 grid, with each cell within the grid being marked by a character from 0-f. Within each of those cells is another 4x4 grid of cells. This grid definition within a cell is recursive, with each grid cell possessing 4x4 cells to a resolution of 16. An example of the recursive definition of cells in highlighted in Figure~\ref{fig:geocell_resolutions}. The full range of coordinates from -90,-180 to 90,180 fall within cells 0-f, at a cell resolution of 1. Cell 7 has a direct child grid encompasses cells 70-7f, containing coordinates -45,90 to 0,180.
+The API represents the world as a rectangular 4x4 grid, with each cell within the grid being marked by a character from 0-f. Within each of those cells is another 4x4 grid of cells. This grid definition within a cell is recursive, with each grid cell possessing 4$x$4 cells to a resolution of 16. An example of the recursive definition of cells in highlighted in Figure~\ref{fig:geocell_resolutions}. The full range of coordinates from -90,-180 to 90,180 fall within cells 0-f, at a cell resolution of 1. Cell 7 has a direct child grid encompasses cells 70-7f, containing coordinates -45,90 to 0,180.
 
 \begin{figure}
 \begin{center}
@@ -133,7 +133,7 @@ To define a resolution suitable for data retrieval for mobile devices, an experi
 
 For storing grouped messages together the approach taken was to create a large number of buckets that would hold the message content. The buckets represent small, fixed-capacity containers that are filled with message content. Once filled to capacity, a new bucket is created to hold any messages that didn't fit into the bucket. While the number of messages stored in a single bucket could be any number, big or small, it is intentionally kept small. This is done to ensure that transmission costs for a single bucket are low. It also allows a number of buckets to be collated to be sent as a response to the user. By sending multiple, small buckets, there is a guarantee that of \emph{n} total buckets that are part of a response, \emph{n-1} buckets will have a full payload. If a single, large bucket were sent as a response to the phone, there would be no guarantee how many messages it would contain. 
 
-When filling the buckets with messages, the message content is stored within the buckets in a data interchange format, as opposed to the runtime objects that represent the messages. The reason for this is so that the data is provided to the phone is a format that it can easily understanding and consume. In this case, the JSON \footnote{\url{http://www.json.org/}} data interchange format was used, due to the availability of APIs for handling JSON across multiple and platforms programming languages. The messages are serialized prior to being put in the bucket to reduce the need to serialize message content any time the contents of a bucket are sent as a response to the device.
+When filling the buckets with messages, the message content is stored within the buckets in a data interchange format, as opposed to the runtime objects that represent the messages. The reason for this is so that the data is provided to the phone is a format that it can easily understanding and consume. In this case, the JSON\footnote{JSON: A data interchange format in which data is specified using the JavaScript object notation \url{http://www.json.org/}} data interchange format was used, due to the availability of APIs for handling JSON across multiple and platforms programming languages. The messages are serialized prior to being put in the bucket to reduce the need to serialize message content any time the contents of a bucket are sent as a response to the device.
 
 \begin{figure}
 \begin{center}
@@ -148,15 +148,37 @@ When filling the buckets with messages, the message content is stored within the
 
 The preparation of buckets to accommodate new messages should occur at regular timed intervals or be triggered by some other event. In this case, a scheduled cron job that ran the bucket preparation algorithm 10 times per minute was used. The Python code for the algorithm used to allocate messages to buckets is shown in Figure~\ref{fig:bucket_preparation_algorithm}. The algorithm is composed of the following steps:
 
+\begin{figure}
+\begin{center}
+\begin{minipage}{5.5in}%
+\label{fig:message_processing_pseudocode}
+\begin{algorithmic}
+\STATE messages = get messages to process
+
+\STATE top = get top bucket
+
+\STATE fill bucket with messages(current top, messages)
+
+\WHILE{messages > 0}
+	\STATE new top = create new bucket
+	\STATE fill top bucket with messages(messages)
+	\STATE link buckets(top, new top)
+	\STATE top = new top
+\ENDWHILE
+\end{algorithmic}
+\end{minipage}
+\end{center}
+\end{figure}
+
 \begin{description}
-	\item[Retrieve unprocessed message hash] {Messages are retrieved from the data store to be processed and allocated to buckets. The call to get\_unprocessed\_message\_hash() encompasses the following two actions:
+	\item[Retrieve unprocessed message hash] {Messages are retrieved from the data store to be processed and allocated to buckets. The call to \texttt{get\_unprocessed\_message\_hash()} encompasses the following two actions:
 
 	\begin{enumerate}
 		\item A pre-defined number of unprocessed messages are retrieved from the data store. The number chosen was 100 messages per request. The retrieved messages are be ordered by the time at which they were created.
 		\item The messages fetched from the data store are stored in a dictionary mapping the message (values) to the geocells in which they are present. This step is included to pre-allocate messages to a bucket, to avoid multiple trips to the data store in cases there are a number of messages to go in buckets.
 	\end{enumerate}}
 	
-	\item[Allocate messages to buckets] Each of the messages is allocated a bucket for the geocell within which it was created. The following steps are performed for each entry in the geocell to message list dictionary:
+	\item[Allocate messages to buckets] Each of the messages is allocated to a bucket for the geocell within which it was created. The following steps are performed for each entry in the geocell to message list dictionary:
 	
 	\begin{enumerate}
 		\item Get the current top bucket for the geocell. If no buckets exist for the geocell then a bucket is created and assigned the status of top bucket.
@@ -193,7 +215,8 @@ The preparation of buckets to accommodate new messages should occur at regular t
 \begin{figure}
 \begin{center}
 \begin{minipage}{5.5in}%
-\begin{python}[caption={Bucket preparation algorithm in Python},label={code:ec_GA}] 
+\begin{python}
+	% caption={Bucket preparation algorithm in Python},label={code:ec_GA} 
 def prepare_buckets_for_messages():
   # Get a hash of geocell -> unprocessed messages
   geo_msg_hash = get_unprocessed_message_hash()
