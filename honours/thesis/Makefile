@@ -29,7 +29,7 @@ MAKEFILE  = Makefile
 
 SRCS	  = preamble.tex title.tex thesis.tex \
 01-intro.tex 02-background.tex 03-method.tex \
-04-findings.tex 05-conclusions.tex
+04-findings.tex 05-implications.tex 06-conclusions.tex
 
 
 FIGURES	  = Figures
