@@ -3,4 +3,53 @@
 \chapter{Conclusions}
 \label{chapter:Conclusion}
 
-\cite{Abebe09a,Abebe09b,Anquetil98a,Antoniol02a,Antoniol07a,Biber98a,Biggerstaff93a,Caprile00a,Caprile99a,Cubranic05a,Deissenboeck06a,Delorey09a,Enslen09a,Etzkorn01a,Etzkorn99a,Feild06a,Fluri07a,Haiduc08a,Helix10a,Hoc77,Host07a,Kuhn07a,Lawrie06a,Lawrie06b,Lawrie07a,Lehman80a,Lehman85a,Lehman97a,Liblit06a,Linstead09a,Maletic01a,Maletic02a,Marcus03a,McEnery01a,Naur75a,Ohba05a,Perry00a,Pierret09a,Porter1997a,Ramal02a,Sim98a,Takang96a,Winograd72a,Zipf49a}
+\textbf{Fix paragraph below}
+
+The effects of software evolution upon software systems has been studied allowing us some insight into what to except, however there has been little research into subsystems of the software to determine if they are similarly influenced by the process of evolution. In this study, we analysed the vocabularies extracted from the source code of over thirty Java \OSYS to gain a greater understanding of the impact of evolution upon the growth and distribution of source vocabularies.
+
+\section{Contributions} % (fold)
+\label{sec:contributions}
+
+The key contributions in this research effort are:
+
+\begin{itemize}
+	
+	\item We showed that vocabularies continue to grow throughout evolution in order to support new terminology. Generally, the trend was for a large number of terms to be contributed towards the vocabulary in early versions and punctuated growth in later releases as the system matures. We found that in most cases the rate at which the vocabulary is increasing in size is similar to that of the system size as a whole, though vocabulary was shown to be more stable than system size. Typically, versions which brought about large increases in system size also yielded substantial contributions to the vocabulary.
+
+	\item We observed how vocabularies are utilised within source code relating to the frequency with which terms are used. Our findings were that there is an inclination to use a small percentage of terms with high frequency, while the majority of the vocabulary is used sparingly. Overall, the distribution of terms was similar to that found within natural-language documents, supporting the findings of \cite{Pierret09a}.
+
+\item We investigated changes in the application of vocabulary to determine the influence that evolution has upon how frequently terms are used, finding that developers the relative frequency with which the most popular terms are used increases over time. Generally, terms that were introduced in early versions of the software were the most frequently re-used indicating that the age of a term provides some indication as to its likelihood of re-use. This was particularly true of terms that were introduced with a high frequency. We found that terms relating to the domain and design patterns were the amongst the most frequently used across any of the systems we analysed.
+	
+	\item We determined whether the laws of software evolution \cite{Lehman97a} extend to source code vocabulary, findings support for the following laws: First law \emph{Continuing Change}, fifth law \emph{Conservation of Familiarity}, and the sixth law \emph{Continuing Growth}. However, our analysis was unable to provide evidence to show support for the other laws.
+
+\end{itemize}
+
+% section contributions (end)
+
+\section{Future Work} % (fold)
+\label{sec:future_work}
+
+In this section, we suggest some possibilities for future research in the area of source code vocabularies and their evolution.
+
+\subsubsection{Integration into Reverse Engineering Tooling} % (fold)
+\label{ssub:integration_into_reverse_engineering_tooling}
+
+Across each of the systems that were analysed within this study, a common theme was for the most popularly used terms to refer to domain and architectural concepts, arguably terms which hold the highest semantic value within the vocabulary used by programmers. This holds potential value in being able to reverse engineer domain models and design and architectural elements from the vocabulary used in the source code and provide an insight as to how these aspects of the software have evolved over time. Future work in this regard would be in the refinement of the vocabulary extraction technique used and integration of the extraction tooling into reverse engineering tools.
+
+% subsubsection integration_into_reverse_engineering_tooling (end)
+
+\subsubsection{Modular Level Analysis} % (fold)
+\label{ssub:modular_level_analysis}
+
+As our study focused primarily on the source code vocabulary as a single evolving entity, the next step is to examine vocabulary at a finer granularity. Most sensibly, this would involve analysis at the module/package level, with the goal of gaining a more precise understanding of the drivers of vocabulary change and being able to localise the origin of changes. Analysis at this level of detail would also paint a more detailed picture of how vocabulary is applied within a system, allowing us to determine whether certain terms are used throughout the system or only within certain modules and the association between modules based on shared terminology.
+
+% subsubsection modular_level_analysis (end)
+
+\subsubsection{Semantic Vocabulary Clustering} % (fold)
+\label{ssub:semantic_vocabulary_clustering}
+
+Our study was effective in being able to highlight terms in the vocabulary that were of a high semantic value based on the popularity of their usage. However, not knowing the context in which these terms are used is a limitation in regards to understanding what the terms mean and how they relate to the rest of the vocabulary. Applying semantic clustering techniques to group related terminology would provide greater knowledge of the mental model of the developers are how they have linked terminology together to form applied meaning within their source code.
+
+% subsubsection semantic_vocabulary_clustering (end)
+
+% section future_work (end)

@@ -1,5 +1,85 @@
 %!TEX root = thesis.tex
 \appendix
 
-\chapter{Meta Data Collected for Software Systems}
-\label{chapter:Appendix_MetaData}
+\chapter{Vocabulary Analysis Files} % (fold)
+\label{cha:vocabulary_analysis_files}
+
+The data referred to in the study of change (\chapref{Findings}) is  described in \tabref{change_files}, and located in the directory \texttt{data/change} on the DVD. The data is also available online at: 
+\vspace{-0.5cm}
+
+\url{http://www.ict.swin.edu.au/personal/rvasa/thesis/data}
+
+The raw metric data is provided as a comma separated values (CSV) file, and the first line of the file contains the header. A detailed output of the statistical analysis undertaken is provided as log files generated directly from Stata (a statistical analysis software) \cite{Stata09a}.
+
+The data table (\tabref{change_files}) is on the next page.
+
+\begin{table}[t]
+\vspace{-3.0cm}
+\centering
+\begin{tabular}{|l|p{0.65\textwidth}|}
+\hline
+{\bf File Name}  & {\bf Description} \\
+\hline \hline 
+\texttt{vocab-gini.csv} & Contains the raw data used to analyse change of distribution in vocabulary. \\
+\hline
+\texttt{vocab-growth.csv} & Contains the raw data used to analyse change of growth in vocabulary. \\
+\hline
+\texttt{vocab-fa.csv} & Contains the raw data used to analyse term re-use likelihood. \\
+\hline
+\texttt{vocab-dist.csv} & Contains the raw data used to analyse the vocabulary distribution profiles. \\
+\hline
+\texttt{vocab-growth-r.csv} & Contains the raw data used to analyse relative growth in vocabulary. \\
+\hline
+\texttt{vocab-gini-fl.csv} & Contains the raw data used to analyse changes in distribution between first and last versions. \\
+\hline
+\texttt{vocab-fa-sp.csv} & Contains the raw data used to analyse the correlation between term re-use and age. \\
+\hline
+\texttt{gadfly-freq.csv} & Contains the raw data used to present language distribution in \emph{The Gadfly} novel. \\
+\hline
+\texttt{ignore-terms.txt} & Contains the list of terms flagged to be ignored in our analysis. \\
+\hline
+\texttt{common-types.txt} & Contains the list of common types that we ignored in our analysis. \\
+\hline
+
+\end{tabular}
+\caption{Data files used in our analysis of Vocabulary (\chapref{Findings})}.
+\label{tab:change_files}
+\end{table}
+
+% chapter vocabulary_analysis_files (end)
+
+\chapter{Vocabulary Analysis Reports} % (fold)
+\label{cha:vocabulary_analysis_reports}
+
+\vspace{-0.5cm}
+
+\url{http://www.ict.swin.edu.au/personal/rvasa/thesis/data}
+
+The data table (\tabref{change_files}) is on the next page.
+
+\begin{table}[t]
+\vspace{-3.0cm}
+\centering
+\begin{tabular}{|p{0.35\textwidth}|l|p{0.55\textwidth}|}
+\hline
+{\bf Report} & {\bf \#} & {\bf Description} \\
+\hline \hline 
+\texttt{Vocabulary Growth} & 201 & Produces the evolution of vocabulary size for a system \\
+\hline
+\texttt{Term Frequency} & 202 & Produces the frequency distribution of term usage for each version \\
+\hline
+\texttt{Term Gini} & 203 &  \\
+\hline
+\texttt{Term Frequency Age} & 204 &  \\
+\hline
+\texttt{Popular Term} & 205 &  \\
+\hline
+\texttt{Popular Term History} & 206 &  \\
+\hline
+
+\end{tabular}
+\caption{Reports used to generate statistics for analysis (\chapref{Findings})}
+\label{tab:change_files}
+\end{table}
+
+% chapter vocabulary_analysis_reports (end)

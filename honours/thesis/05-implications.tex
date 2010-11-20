@@ -2,19 +2,98 @@
 \chapter{Implications} % (fold)
 \label{cha:implications}
 
+In previous two chapters we addressed the research questions that mo- tivated this thesis. In this chapter we discuss the implications arising from our observations. Specifically, in Section~\ref{sec:laws_of_software_evolution} we discuss how our findings provide support for some of the laws of software evolution, and offer recommendations to help improve software development practices in Section~\ref{sec:software_development_practices}.
+
+\section{Laws of Software Evolution} % (fold)
+\label{sec:laws_of_software_evolution}
+
+\textbf{Lehman's laws describe the evolution of software systems...}
+
+\textbf{But it is unknown whether these laws describe only the culmination of all aspects of a software system or whether they are also effective in describing subsystems of the software as well.}
+
+\textbf{In our study, we investigated the impact that evolution yields upon the size and distribution of the vocabulary used by developers within source code and whether the characteristics shown by evolving vocabularies support the laws as described by Lehman.}
+
+Specifically, we find support for the first law \emph{Continuing Change}, fifth law \emph{Conservation of Familiarity}, and the sixth law \emph{Continuing Growth}. However, our analysis was not able to provide suf- ficient evidence to show support for the other laws.
+
+\subsubsection{Change} % (fold)
+\label{ssub:change}
+
+Our observations of the distribution of vocabulary showed a consistent increase in the inequality of wealth, providing support for the first law of software evolution -- \emph{Continuing Change}. In terms of change, the expectation of software, based on previous studies, is that the amount of change overall will be small and that change will be brought about incrementally, rather than in large bursts. Our findings showed that this was also the case for vocabulary, which showed greater levels of stability than software as a whole. The overall stability of the vocabulary indicates that once a mental model has been established by developers, it becomes highly resistant to change and undergoes small refinements, as opposed to substantial modifications. We found that the largest changes occur in major releases, coninciding with functional growth, indicating that change is more likely to accomodate new features, rather than other maintenance activities.
+
+% subsubsection change (end)
+
+\subsubsection{Complexity} % (fold)
+\label{ssub:complexity}
+
+\crumbs{\textbf{Complexity is kinda hard to define}}
+
+\crumbs{\textbf{Growth patterns (predominately sub-linear) indicate that there is increasing complexity}}
+
+\crumbs{\textbf{Bound Gini values also support this}}
+
+% subsubsection complexity (end)
+
+\subsubsection{Familiarity} % (fold)
+\label{ssub:familiarity}
+
+The fifth law (Conservation of Familiarity) suggests that a software system will grow at a rate at which enables its developers to maintain familiarity with the code base. This was supported in our study by the prominence of sub-linear growth patterns for vocabulary, which indicated that terms within the vocabulary were being re-used. Furthemore, the consistently increasing Gini Coefficient value showed that developers tend to re-use a subset of terms that were more familiar than others. This was also evident in our findings that older terms were more likely candidates for re-use.
+
+% subsubsection familiarity (end)
+
+\subsubsection{Growth} % (fold)
+\label{ssub:growth}
+
+Our observations show that vocabulary undergoes continual addition across releases, although the rate of vocabulary growth generally slows as the system matures. As our findings showed that the rate at which terms were introduced into the vocabulary was typically similar to that at which the system size was growing, it appears as though new terminology is being introduced to support functional growth.
+
+
+% The sixth law (Continuing Growth) states that “evolving software must be continually enhanced to maintain user satisfaction”.
+% 
+% 
+% Our observations show that software systems are built incrementally bottom-up and that there is a small proportion of code that constitutes new classes in every release. Though, new classes need not always con-
+% tain new functionality (which is possible if new classes were created due to refactoring), the consistency with which new classes are added sug- gests that developers grow software systems by adding functionality in new classes.
+
+% subsubsection growth (end)
+
+% section laws_of_software_evolution (end)
+
+\section{Software Development Practices} % (fold)
+\label{sec:software_development_practices}
+
+\crumbs{{\bf Introduction section}}
+
+\textbf{What did we find and what implications does it have for development practices?}
+
 \subsubsection{Guiding Documentation} % (fold)
 \label{ssub:guiding_documentation}
+
+- Extraction of popularly used (important) vocabulary showed that we were about to highlight terms of high semantic value... 
+
+- Detecting big changes in how the vocabulary is used
+
+- Determining when the amount of vocabulary has substantially
+
+- Not only the production of documentation capturing vocabulary from an early stage, but also ongoing
 
 % subsubsection guiding_documentation (end)
 
 \subsubsection{Informing New Developers} % (fold)
 \label{ssub:informing_new_developers}
 
+- 
+
+- Present a concise snapshot of vocabulary that is relevant to the building mental models for developers new to a piece of software and give an idea of the history of terms
+
 % subsubsection informing_new_developers (end)
 
 \subsubsection{Iteration Retrospectives} % (fold)
 \label{ssub:iteration_retrospectives}
 
+- Run tooling at the end of iterations
+
+- Gives an alternative perspective (may pick up things not considered by the developers and act as a trigger)
+
 % subsubsection iteration_retrospectives (end)
+
+% section software_development_practices (end)
 
 % chapter implications (end)

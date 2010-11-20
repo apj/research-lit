@@ -7,25 +7,34 @@
 \section{Vocabulary and Linguistics} % (fold)
 \label{sec:vocabulary_and_linguistics}
 
-\textbf{TODO: Get a tighter definition of vocabulary}
+\textbf{Might want to chuck language and linguistics intro in here}
 
-\textbf{Tidy up flow of this paragraph...just a brain dump for now}
+\crumbs {
 
-\textbf{Need to be more effective selling the importance of vocabularies here}
+\textbf{Flow:}
 
-\textbf{Will of course need citations of work studying how vocabulary is formed, the importance of vocabulary, how it changes, etc.}
+- Vocabulary is a set of terms that a person is familiar with
 
-\crumbs{Vocabulary describes the collection of words that one has learnt and is able to recall.}
+- Vocabularies are expanded to describe new things we encounter
+
+- By expanding our vocabularies we can be more expressive and precise with our communication
+
+- However with the sheer volume of magnitude of terms that there are in language, it is beyond the capacity of humans to remember all of these terms
+
+- So our brain will prioritise it's capacity to remember terms that are of most important and most frequent use to us
+
+- While vocabularies are flexible in order to suit our needs...their development comes over time and it is not practical to uproot it all at once
+
+}
+
+Vocabulary is the set of words a person is familiar with in a given domain. This includes all terminology within the problem domain as well as the solution domain. Typically, this vocabulary grows and evolves in age and serves as a useful and fundamental tool for communication and acquiring knowledge.
+
 
 \crumbs{We build vocabularies in order to more adequately and consistently describe things we encounter.}
 
 \crumbs{Broadening vocabularies can allow us to be more expressive and precise with our communication.}
 
-\crumbs{But terms can be synonymous or polysemic depending upon context, meaning we have to choose our words carefully.}
-
 \crumbs{Humans don't quite have the capacity to expand their vocabularies to cover a language-worth of terms, so our brain will prioritise it's capacity to remember terms that are of most important and most frequent use to us.}
-
-\crumbs{This allows to be more effective with our vocabularies}
 
 \crumbs{While vocabularies are flexible in order to suit our needs...their development comes over time and it is not practical to uproot it all at once}
 
@@ -33,20 +42,17 @@
 
 \crumbs{Linguistics play a role in our comprehension of something (how we relate to it/understand it with the building blocks we know)}
 
+% \textbf{Need to be more effective selling the importance of vocabularies here}
+% 
+% \textbf{Will of course need citations of work studying how vocabulary is formed, the importance of vocabulary, how it changes, etc.}
+
+% \crumbs{Vocabulary describes the collection of words that one has learnt and is able to recall.}
+
+% \crumbs{But terms can be synonymous or polysemic depending upon context, meaning we have to choose our words carefully.}
+
+% \crumbs{This allows to be more effective with our vocabularies}
+
 % section vocabulary_and_linguistics (end)
-
-\section{Mental Models} % (fold)
-\label{sec:mental_models}
-
-\crumbs{Mental models describe our cognitive process in regard to comprehension of things we are exposed to}
-
-\crumbs{We build mental models as they allow us an understanding of something that is more akin to each individuals way of thinking}
-
-\crumbs{Team mental models are important, so that team members comprehensions of something are not wildly different (though not all the same -- different perspectives can be a good thing...) -- need to have a consistent representation of a problem if they are to work towards to a well-formed solution.}
-
-\crumbs{Languages play a significant role in building mental models, as we as humans associate our understanding with something using the language we have acquired that can be used to describe it.}
-
-% section mental_models (end)
 
 \section{Source Code Vocabulary} % (fold)
 \label{sec:source_code_vocabulary}
@@ -75,6 +81,19 @@ The Programmer's Lexicon \cite{Host07a}
 
 % section source_code_vocabulary (end)
 
+\section{Mental Models} % (fold)
+\label{sec:mental_models}
+
+\crumbs{Mental models describe our cognitive process in regard to comprehension of things we are exposed to}
+
+\crumbs{We build mental models as they allow us an understanding of something that is more akin to each individuals way of thinking}
+
+\crumbs{Team mental models are important, so that team members comprehensions of something are not wildly different (though not all the same -- different perspectives can be a good thing...) -- need to have a consistent representation of a problem if they are to work towards to a well-formed solution.}
+
+\crumbs{Languages play a significant role in building mental models, as we as humans associate our understanding with something using the language we have acquired that can be used to describe it.}
+
+% section mental_models (end)
+
 \section{Software Mental Models} % (fold)
 \label{sec:software_mental_models}
 
@@ -94,6 +113,13 @@ The Programmer's Lexicon \cite{Host07a}
 
 \section{Natural Language vs. Programmer Language} % (fold)
 \label{sec:natural_language_vs_programmer_language}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{Figures/Vocab-GadflyFreqDist.pdf}
+\caption{Term frequency distribution for \emph{The Gadfly}, showing a preference towards using a large number of terms infrequently}
+\label{fig:vocab-freqdist-gadfly}
+\end{figure}
 
 \crumbs{\textbf{Citable:} Corpus Linguistics ... \cite{Biber98a} 
 Corpus Linguistics ... \cite{McEnery01a}
@@ -121,10 +147,10 @@ Selective Studies (Zipf) \cite{Zipf49a}}
 
 % section natural_language_vs_programmer_language (end)
 
-\section{Software Evolution} % (fold)
-\label{sec:software_evolution}
-
-% section software_evolution (end)
+% \section{Software Evolution} % (fold)
+% \label{sec:software_evolution}
+% 
+% % section software_evolution (end)
 
 \section{Source Code Vocabulary Evolution} % (fold)
 \label{sec:source_code_vocabulary_evolution}
@@ -151,3 +177,25 @@ Selective Studies (Zipf) \cite{Zipf49a}}
 \crumbs{Outline how our research fits in and how it addresses those gaps}
 
 % section summary (end)
+
+\section{Research Questions} % (fold)
+\label{sec:research_questions}
+
+\begin{itemize}
+	% Growth-related questions
+	\item What are the trends for growth in total size of the vocabulary across evolving software systems? Does this match findings for the growth of software systems as a whole?
+	% Distribution-related questions
+	\item What is the distribution of term usage frequency within vocabulary?
+		\begin{itemize}
+			\item Is there an observable similarity in the vocabulary distribution profiles between systems?
+		\end{itemize}
+	\item How does the distribution of term usage change throughout the evolution of a system?
+		\begin{itemize}
+			\item Are the most popular continually re-used?
+			\item Are changes to the vocabulary stable or erratic?
+		\end{itemize}
+	\item Does the age of a term have an influence on the likelihood that it will be re-used?
+	\item What do the most frequently used terms refer to? Are these terms related to the domain or architectural concepts (such as idioms and design patterns)?
+\end{itemize}
+
+% section research_questions (end)
