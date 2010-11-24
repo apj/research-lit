@@ -1,10 +1,10 @@
 %!TEX root = thesis.tex
 \chapter{Introduction}
-\label{chapter:Introduction} 
+\label{cha:introduction} 
 
 The source code that makes up a software system represents a substantial corpus of text, which is, in most cases, almost entirely written by humans \textbf{[Cite]}. While there is an obligation on the developers part to ensure that the source code is written in a manner in which it can be executable by the system upon which it is designed for, developers have the liberty of using expressive language in their code \textbf{[Cite]}.
 
-Utilising this freedom, developers are able to write code that is rich in semantic information regarding not only the purpose of the application and the domain in which it operates, but also the manner in which it has been designed and implemented \textbf{[Cite]}. Such information is crucial in facilitating the development of mental models, which allow an adequate and consistent comprehension of the software for the developers involved in its construction \textbf{[Cite]}.
+Utilising this freedom, developers are able to write code that is rich in semantic information embedded within the names of the symbols regarding not only the purpose of the application and the domain in which it operates, but also the manner in which it has been designed and implemented \textbf{[Cite]}. This semantic information is crucial in facilitating the development of mental models, which enable a consistent comprehension of the software and its design \textbf{[Cite]}.
 
 As software evolves to include new functionality for those who intend to use it, there will inherently be changes within the codebase to support this evolution, bringing about new concepts that require representation within the software and an associated vocabulary used to describe these concepts \textbf{[Cite]}. This in turn requires the developers to adjust their mental models of the software, which can often be an expensive and timely process \textbf{[Cite]}.
 
@@ -19,7 +19,7 @@ In this thesis we investigate how vocabulary is established and applied within s
 
 This study aims to provide an understanding of the nature of vocabulary within the source code of software systems and the impact that the process of software evolution has upon source code vocabulary, specifically \OSYS that are developed using the Java programming language \cite{Gosling00a}.
 
-Our motivation in undertaking this study is to understand how vocabularies are built and applied within software systems, the growth and change to the vocabulary brought about by evolution and in what stages of the software's evolution such changes occur. This knowledge can aid developers and managers in capturing and maintaining documentation for a vocabulary representative of that which is used within the source code by outlining terms which are paramount in facilitating program comprehension. This understanding can be also be applied in the comparison of different types of software systems, to assess the quality and complexity of the vocabulary that has been established and the viability of using the software system.
+Our motivation in undertaking this study is to understand how vocabularies are built and applied within software systems, the growth and change to the vocabulary brought about by evolution and in what stages of the software's evolution are the effects most prominent. This knowledge can aid developers and managers in capturing and maintaining documentation for a vocabulary representative of that which is used within the source code by outlining terms which are paramount in facilitating program comprehension. This understanding can be also be applied in the comparison of different types of software systems, to assess the quality and complexity of the vocabulary that has been established and the viability of using the software system.
 
 The goal of this research is to describe how vocabularies are established and then changed throughout the lifetime of a software system, with the aim of identifying patterns of source code vocabulary evolution that will allow a general understanding of the nature of the evolution, as opposed to investigating activities of software evolution that are the cause of changes to the vocabulary.
 
@@ -28,9 +28,9 @@ The goal of this research is to describe how vocabularies are established and th
 \section{Research Approach} % (fold)
 \label{sec:research_approach}
 
-Our research is based on an exploratory study of \emph{thirty-four} popularly used and active Java \OSYS, the results and interpretation of which are from an empirical software engineering perspective. The data set is composed of over 1000 individual releases which includes approximately 34000 unique classes. We investigate \OSYS due to their wide availability, permissive licensing schemes, and their adoption in a diverse range of projects.
+Our research is based on an exploratory study of \emph{thirty-four} popularly used and active Java {\OSYS}, the results and interpretation of which are from an empirical software engineering perspective. The data set is composed of over 1000 individual releases which encompass approximately 34000 unique classes. We investigate {\OSYS} due to their wide availability, permissive licensing schemes, and their adoption in a diverse range of projects.
 
-Our approach to analysing vocabulary involves the extraction of metric data from compiled binaries (Java class files), which contains the terminology used by developers in their code, and observing changes in the vocabulary across the software's release history. Though not directly targeted for our analysis, we also make use of documentation associated with the project, such as release notes and defect logs to guide our experimentation and supplement our findings. Using this information, we can determine whether abnormal amounts of growth and changed have been meaningfully represented in the associated documentation.
+Our approach to analysing vocabulary involves the extraction of symbol names from compiled binaries (Java class files), which contains the terminology used by developers in their code, and observing changes in the vocabulary across the software's release history. Though not directly targeted for our analysis, we also make use of documentation associated with the project, such as release notes and defect logs to guide our experimentation and supplement our findings. Using this information, we can determine whether abnormal amounts of growth and change have been meaningfully captured in the associated documentation.
 
 In order to understand the impact that evolution has on source code vocabulary, we construct absolute frequency histograms representing the usage of terminology in source code and use high-order statistictal techniques to highlight changes in the usage of vocabulary over time. Using this information, we are able to identify releases in which substantial changes to the vocabulary occur. Addtionally, it gives us a means of comparison, allowing us to ascertain whether there are commonalities across software systems.
 
@@ -39,17 +39,19 @@ In order to understand the impact that evolution has on source code vocabulary, 
 \section{Main Research Outcomes} % (fold)
 \label{sec:main_research_outcomes}
 
-\emph{In this thesis, we address the problem of identifying how vocabularies are established in software systems, the ways in which they grow to support new terms and the changes in how the set of terms within the vocabulary is applied within the source code. We show that vocabulary is primarily established within early releases of a software system and that large changes seldom occur, indicating that developers preserve their mental model of a system by heavily re-using existing terminology. Interestingly, the most popularly used terms refer to domain and architectural concepts, which shows developers adhere to best practices relating to the language used in source code.}
+\emph{In this thesis, we address the problem of identifying how vocabularies are established in software systems, the ways in which they grow to support new terms and the changes in how the set of terms within the vocabulary is applied within the source code. We show that vocabulary is primarily established within early releases of a software system and that large changes seldom occur, indicating that developers preserve their mental model of a system by heavily re-using existing terminology. Interestingly, the most popularly used terms refer to domain and architectural concepts, which shows developers consistently adhere to established practices relating to the language used in source code.}
 
 This thesis makes the following contributions to the body of knowledge of source code vocabulary evolution:
 
-Firstly, we investigated the nature of growth exhibited by source code vocabularies. We found that in all but a few cases, the growth rate of the vocabularies is clearly sub-linear, indicating that the vocabularies will only grow to a certain extent, at which point further growth is only very minor. Comparing growth of vocabulary to that of overall size, we found that the two exhibit a similar rate of growth and that substantial changes in the system are reflected within the vocabulary.
+Firstly, we investigated the nature of growth exhibited by source code vocabularies. We found that in all but four cases, the growth rate of the vocabularies is sub-linear. Comparing growth of vocabulary to that of overall size, we found that the two exhibit a similar rate of growth and that substantial changes in the system are also reflected within the vocabulary.
 
-Secondly, we investigated how vocabularies are formed within source code, relating to the collection of terms within the vocabulary and the frequency with which terms are used across the system. We found that the manner in which term usage is distributed throughout the source code is similar to that of the distribution of words within natural-language corpora, supporting the findings of \cite{Pierret09a}.
+Secondly, we investigated how vocabularies are formed within source code specifically, the collection of terms within the vocabulary and the frequency with which terms are used across the system. We found that the manner in which term usage is distributed throughout the source code is similar to that of the distribution of words within natural-language corpora, supporting the findings of Pierret and Poshyvanyk \cite{Pierret09a}.
 
 Thirdly, we investigated how the usage of terms within the source code changes as the software is subject to evolution, finding that developers have a preference for frequent re-use of a relatively small number of terms across different versions of a software system. We found that there is a much greater likelihood for terms introduced in early releases to be re-used, as opposed to the introduction of new terms deprecating old terminology. There are some exceptions to this, namely terms that are introduced in order to support major concepts within the software. Our investigations show that the most popularly used terms relate to domain and architectural concepts.
 
-Finally, we assessed the applicability of the laws of software evolution proposed by Lehman \cite{Lehman80a,Lehman97a} in describing the evolution of source code vocabularies. Through our assessment, we found support for the first law \emph{Continuing Change}, fourth law \emph{Conservation of Organisational Stability}, fifth law \emph{Conservation of Familiarity}, and the sixth law \emph{Continuing Growth}. Despite this, our analysis was unable to provide evidence to show support for the other laws.
+Finally, we discussed the applicability of the laws of software evolution proposed by Lehman \cite{Lehman80a,Lehman97a} in describing the evolution of source code vocabularies. Through our assessment, we found support for the first law \emph{Continuing Change}, fifth law \emph{Conservation of Familiarity}, and the sixth law \emph{Continuing Growth}. Our analysis was unable to provide sufficient evidence to show support for the other laws.
+
+% fourth law \emph{Conservation of Organisational Stability}
 
 % section main_research_outcomes (end)
 
@@ -71,3 +73,5 @@ This thesis is organised into a set of chapters, followed by an Appendix. The ra
 \textbf{Appendix} provides an overview of the files on the companion DVD for this thesis and the tools used to obtain the metrics for our analysis.
 
 % section thesis_organisation (end)
+
+% section introduction (end)
