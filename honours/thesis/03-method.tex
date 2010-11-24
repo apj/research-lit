@@ -1,24 +1,18 @@
 %!TEX root = thesis.tex
 \chapter{Method}
-\label{chapter:Method}
+\label{cha:method}
 
-Empirical research by its very nature relies heavily on quantitative information and a means of analysing this information. In our study, we extract information from number of \OSYS. This chapter introduces the different types of information that can be used to study software evolution, the Open Source Software Systems that were used for our analysis and the approach to selecting systems. Following this, we outline how we defined vocabulary and the method we used to extract vocabularies from the selected systems.
+Empirical research by its very nature relies on quantitative information and a means of analysing this information. This chapter outlines our approach to obtaining data used to study software evolution, the {\OSYS} that were used for our analysis and the approach to selecting systems. We describe how we defined vocabulary and the method we used to extract representative vocabularies from the software systems.
 
 \section{Data Collection} % (fold)
 \label{sec:data_collection}
 
-% - Need to first identify an appropriate source of information for study evolution
-
-% - Need to source individual systems that maintain a complete record of their history
-
-% - Refine according to some criteria
+Quantitative research relies on the acquisition of data that is appropriate and representative of the object of study, such that this data can be analysed and interpreted to give a greater understanding of what is being studied. In this section we describe the types of data that can be used to study software evolution, our motivation for studying {\OSYS} and the systems we selected for our study.
 
 \subsection{Types of Evolution Data} % (fold)
 \label{sub:types_of_evolution_data}
 
-% - We used the release history as it presents concrete outcomes, whereas the revision history relies too much on human factors.
-
-Studies of software evolution rely on historical information relating to software systems. Using this information, we can construct a longitudinal representation of the software in order to analyse its evolution. This historical information falls under three classifications, as described in \cite{Vasa10a}, which are summarised in Table~\ref{tab:Histories}.
+Studies of software evolution rely on historical information relating to software systems. Using this information, we can construct a longitudinal representation of the software in order to analyse its evolution. This historical information falls under three classifications, as described in \cite{Vasa10a}, which are summarised in \tabref{histories}.
 
 \begin{table*}[t]
 \centering
@@ -35,53 +29,59 @@ Project History & Messages (email, Instant message logs), Project documentation 
 \end{tabular}
 \vspace{0.2cm}
 \caption{The different types of histories that typically provide input data for studies into software evolution}
-\label{tab:Histories}
+\label{tab:histories}
 \vspace{-0.2cm}
 \end{table*}
 
-\emph{Release history} is that which is composed of data that pertains to the releases of a software system. This is most commonly source code, but can also include binaries, release notes and release documentation. Studies of the release history of software systems focus upon the outcome of changes within a software system. \emph{Revision history} on the other hand, relates to the information captured regarding change, composed of information such as version control logs, defect logs and other change documentation. Such information allows us to understand the maintenance activities of the developers involved and how it relates to change. \emph{Project history} is information relating the communication and process of those involved with the project, including email and IM logs, as well as project documentation capturing plans, methodology and process.
+\emph{Release history} is that which is composed of data that pertains to the releases of a software system. This is most commonly source code, but can also include binaries, release notes and release documentation. Studies involving the release history of software systems focus upon the outcome of changes within a software system. \emph{Revision history} on the other hand, relates to the information captured regarding change, composed of information such as version control logs, defect logs and other change documentation. Such information allows us to understand the maintenance activities of the developers involved and how it relates to change. \emph{Project history} is information relating the communication and process of those involved with the project, including email and IM logs, as well as project documentation capturing plans, methodology and process.
 
-% - Reword paragraph below
-
-For our study we directly analysed the release history of the software systems; more specifically, the binaries that represented individual releases. This allowed us to study the product of development efforts and gave us something concrete to study; it was also the most consistenly available information. As both \emph{revision history} and \emph{project history} rely too much on human factors, this information was used as an insight in the development practices of the software and helped guide our investigation.
+For our study we directly analysed the release history of the software systems, in particular, the binaries that represented individual releases. This allowed us to study the product of development efforts and gave us something concrete to analysis and was also the most consistenly available information. As both \emph{revision history} and \emph{project history} are the product of efforts from humans, they reveal more about the intentions of the developers, as opposed to an absolute truth. Instead, this information was used as an insight in the development practices involved in building the software and helped guide our investigations.
 
 % subsection types_of_evolution_data (end)
 
 \subsection{Open Source Software (OSS)} % (fold)
 \label{sub:open_source_software_oss_}
 
-% \crumbs{\textbf{Why do we use OSS?}}
-% 
-% \crumbs{\textbf{OSS is, in general, software that is free. -- Raj}}
-% 
-% \crumbs{\textbf{It has non-restrictive licensing, which allows us to use and modify it as we see fit.}}
-% 
-% \crumbs{\textbf{It is popularly used, even within commercial projects}}
-% 
-% \crumbs{\textbf{It is this liberal approach to licensing that makes OSS an attractive option for }}
+Open Source Software (OSS) is software that is made available under a permissive licensing scheme conforming to the Open Source Definition (OSD), as defined by the Open Source Initiative\footnote{\texttt{Open Source Initiative} \emph{http://www.opensource.org.}} that allows it to be studied, altered and re-distributed by a user for free. Typically, the software itself is distributed in binary form and as source code, the latter being a mandatory requirement outlined by the OSD.
 
-% - OSS is free and distributed with source code
+\begin{table}[t]
+\centering
+\begin{tabular}{|p{0.21\textwidth}|p{0.74\textwidth}|}
+\hline
+{\bf Criteria}&{\bf Description} \\
+\hline
+\hline
+Free \par Redistribution & Redistribution of the program, in source code or other form, must be allowed without a fee. \\
+\hline
+Source Code & The source code for program must be available at no charge, or a small fee to cover cost of distribution and media. Intermediate forms such as the output of a preprocessor or translator are not allowed. Deliberately obfuscated source code is not allowed. \\
+\hline
+Distribution of Modifications & Distribution of modified software must be allowed without discrimination, and on the same terms as the original program. \\ 
+\hline
+License & The license must allow modifications, derived works, be technology neutral. It must not restrict other software, and must not depend on the program being part of a particular software distribution. \\
+\hline
+Integrity & The license may require derived and modified works to carry a different name or version number from the original software program.  \\
+\hline
+No \par Discrimination & The license must not restrict the program to specific field of endeavour, and must not discriminate against any person or group of persons. \\
+\hline
+\end{tabular}
+%\hline
+\vspace{0.2cm}
+\caption{The criteria that defines an Open Source Software System}
+\label{tab:osi_criteria}
+\end{table}
 
-% - Gained adoption within commercial projects
+{\OSS} projects, due to their non-restrictive licensing and open philosophy, present themselves as ideal candidates for studies of software engineering. As these projects typically archive a history of their associated releases, this naturally extends to longitudinal studies, particularly that of software evolution. This is enabled by the lack of restrictions pertaining to research upon \OSYS, which allow for the analysis of systems and presentation of findings (see \emph{No Discrimination} in \tabref{osi_criteria}).
 
-% - Generally have liberal licensing schemes which allows developers to do what they want with the code
-
-% - Allows us an insight into the practices of developers that would not be available in commercial projects due to protection of information
-
-% - Distributed...people from many backgrounds
-
-% - Availability of not only current state of software, but also an entire history (source code, documentation, change logs)
+As open source projects typically encourage and are sustained by the contribution of individuals in the development community, they tend to operate in a transparent manner, making public not only the progress of their development efforts and subsequent releases, but also the communication exchanges between developers involved through tools such as issue trackers and user groups. This allows an insight in the operations and practices of development teams working on non-trivial software that would not be available for a commercial software project, due to the protection of information and copyright associated with the majority commercial development.
 
 % subsection open_source_software_oss_ (end)
 
 \subsection{Obtaining the Data} % (fold)
 \label{sub:obtaining_the_data}
 
-% - Glue sentence -- we need a lot of data!
+Research efforts involving quantitative analysis rely on an appropriate sampling of data. To obtain the raw data required for conducting our study, we drew upon an existing corpora of open source Java software systems known as the Helix data set \cite{Helix10a}, which was established and used as a component of the work undertaken by Vasa in \cite{Vasa10a}.
 
-To obtain the raw data required for conducting our study, we drew upon an existing corpora of open source Java software systems known as the Helix data set \cite{Helix10a}, which was established and used as a component of the work undertaken by Vasa in \cite{Vasa10a}.
-
-The Helix data set was composed by mining many popularly used open source project repositories. Such repositories provide a rich source of information pertaining to the studies of software. This typically includes the source code and binary packages for most, if not all, of the versions that have been released as part of the project. In addition to this, most repositories provide tools such as source control, wikis and defect tracking that facilitate communication between the developers of the project and the user base.
+The Helix data set was composed by mining many popularly used open source project repositories. Such repositories provide a rich source of information pertaining to the studies of software, typically making available the source code and binary packages for most, if not all, of the versions that have been released as part of the project. In addition to this, most repositories provide tools such as source control, wikis and defect tracking that facilitate communication between the developers of the project and the user base.
 
 \bigskip
 The data set was composed of projects obtained from the following repositories:
@@ -102,9 +102,7 @@ Furthermore, we refined the Helix data set which was presented in \cite{Vasa10a}
 \subsection{Selection Criteria} % (fold)
 \label{sub:selection_criteria}
 
-In order to identify suitable systems for our study, we defined a number of selection criteria. The set of criteria used and the rationale for our selection is presented in this section.
-
-In order to selecting suitable systems for our study, we leveraged a selection criteria used for studying \OSYS in the context of software evolution, as proposed by Vasa in \cite{Vasa10a}.
+To select suitable systems for our study, we leveraged a selection criteria used for studying \OSYS in the context of software evolution, as proposed by Vasa in \cite{Vasa10a}.
 
 In their study they define the following criteria that each project considered for selection must meet:
 
@@ -113,26 +111,18 @@ In their study they define the following criteria that each project considered f
 	\item The software is a single coherent system, that is, it is a distribution of a collection of related {\em components} packaged together.
 	\item At least {\em 15 releases} of the system are available. Only complete releases with a version identifier are considered. Branches and releases not derived from the main system tree are ignored.  Minor and major versions are both considered (for instance, Version 2.0, 2.1 and 3.0 are all considered. In this case, the version with identifier 2.1 is often a release that provides minor enhancements and/or defect corrections).
 	\item The system has been in actively development and use for at least \emph{36 months}.
-	\item The system comprises of at least \emph{100 types} (i.e., classes and interfaces) in all releases under study.
+	\item The system comprises of at least \emph{100 types} (\ie classes and interfaces) in all releases under study.
 	\item Change logs do exist. This data provides the additional information to understand the rationale behind the changes.
 \end{enumerate}
 
 \subsubsection{Rationale of Selection Criteria} % (fold)
 \label{ssub:rationale_of_selection_criteria}
 
-In \cite{Vasa10a} the rationale that was provided can be summarised as:
+The Java programming language was selected due to its popularity within the open source community as well commercial settings, which has lead to the development of a diverse range of projects spanning a variety of domains. However, while it has gained substantial traction in terms of its usage, most studies of software evolution have focused on the investigation of software developed in C and C++ \textbf{[Cite]}. Those that have examined the evolution of Java software systems have done so in a limited capacity, typically analysing less than 10 projects \textbf{[Cite]}.
 
-% - Java is popular and is widely used
+Systems were required to have been in active development for at least 36 months and have no less than 15 releases to ensure that there is some level of maturity within the software systems so as to provide sufficient development history for our analysis. These exact figures were selected based on observations made by Capiluppi \cite{Capiluppi03a}, which found that only 15\% of open source projects have a development history greater than 2 years. This allowed us to focus on learning from systems that have been successful in their evolution, as opposed to those that had failed.
 
-% - Subsequently, lots of software has been developed using it
-
-% - 36 months chosen as an indicator of projects that are likely to be mature in their development. Took a subset of projects that were considered to be successful. More likely have a significant development history.
-
-% - Systems that at least 100 class were chosen as they were less likely to trivial and we would be able to generalise on bigger systems.
-
-% - Changes logs would help to guide our investigation and explain anomalies and big changes.
-
-% They noted that size and skill of development teams was removed as criteria as this information could not be accurately established.
+The requirement of having at least 100 types in any releases was imposed in order to increase the likelihood that the systems selected would be non-trivial. Further, smaller software systems limit the extent to which we can generalise due to insufficient variability. We restricted our input data to systems that provided change logs as it helped to guide our investigation by providing a supplementary explanation of abnormal behaviour through the course of evolution.
 
 % subsubsection rationale_of_selection_criteria (end)
 
@@ -141,9 +131,7 @@ In \cite{Vasa10a} the rationale that was provided can be summarised as:
 \subsection{Selected Systems} % (fold)
 \label{sub:selected_systems}
 
-% Glue sentence -- we had more systems to choose from, but we didn't for X reasons
-
-The subset of the systems that were selected from the Helix data set to use for our study consists of \emph{thirty-four} systems which, altogether, account for 1011 unique releases and approximately 34,000 classes (between each of the systems and their releases).
+Initially, according to the selection criteria that was adopted, we identified 100s of systems that would be appropriate for our study. However, we elected to analyse a smaller sampling of the potential systems in order to study each system in greater depth. The subset of the systems that were selected from the Helix data set to use for our study consists of \emph{thirty-four} systems which, altogether, account for 1011 unique releases and approximately 34,000 classes (between each of the systems and their releases).
 
 These systems were selected with the intention of achieving a near-equal representation of a diverse range of different types of software available in the Java open source community. Broadly, they fall within one of three categories: (a) Applications, (b) Frameworks, and (c) Libraries, as defined in \cite{Vasa10a}.
 
@@ -242,87 +230,100 @@ Xerces&Library&20 & 496 & 710 & XML processor\\
 \section{Vocabulary Extraction} % (fold)
 \label{sec:vocabulary_extraction}
 
-% - To capture representation of vocabulary that can be analysed, need to first identify which elements are considered parts of the vocabulary and which are not (dissemination)
-
-% - Once this has been identified need a way of extracting this information and presenting it in a way in which it can be analysed.
-
-% - In this section we describe how this achieved...
+In this section we describe the definition of vocabulary that we used within this study and how we went about extracting a representation of vocabulary from the source code according to this definition.
 
 \subsection{Vocabulary Definition} % (fold)
 \label{ssec:vocabulary_definition}
 
-% Introduce section
+Source code represents a substantial corpus of text that is, in most cases, entirely human-generated. Embedded within this text is semantic information regarding the problem domain that it pertains to and how the application has been built. To study the vocabulary that is used by developers, an adequate defintion of what should be considered vocabulary and how it can be distinguished from other text in the source code is required.
 
-% What should consitute a definition of vocabulary, based upon what is usually considered vocabulary (definition)
+In the following sections we outline the definitions that have been used in previous studies of source code vocabulary and provide the definition that we used in our analysis.
 
 \subsubsection{Existing Definitions of Vocabulary} % (fold)
 \label{ssub:existing_definitions_of_vocabulary}
 
-Research in the area of source code vocabulary is currently lacking an adequate and consistent definition of vocabulary.
+Research in the area of source code vocabulary is currently lacking an adequate and consistent definition of vocabulary. This was noted by Delorey \etal who, given the absence of a definition, described three practical levels of abstraction at which ``word'', the atomic unit with which vocabularies are composed, could be defined at \cite{Delorey09a}. The three levels of abstraction they described were:
 
-% This was highlighted by Delorey et al. in \cite{Delorey09a}.
+\begin{description}
+	\item[Lexicographic] Identical strings of continguous non-whitespace characters are considered counted as the same word
+	\item[Syntactic] Lexicographically equivalent words are only considered equivalent if used in the same part of speech (\eg a word used in a class name that is lexicographically equivalent to a word used in a method name is not considered identical)
+	\item[Semantic] Syntactically equivalent words are grouped only if they refer to the same definition. This requires a symbol table mapping a word to its definition.
+\end{description}
 
+From the definitions that were proposed, they utilised a definition of word at the \emph{syntactic} level of abstraction for their study. This choice was made as they argued that words defined at the \emph{lexicographic} level of abstraction that were used frequently would also be the most polysemous and homonymous. Furthermore, they lacked an adequate symbol table that could be used to take advantage of the more precise \emph{semantic} definition. In addition to the symbols used within identifiers, their study also included keyword and operators (\eg mathematical operators and scoping blocks) as part of the vocabulary, arguing this information could contain some relevant information and hence should not be discarded.
 
-In their study, they outlined a number of possible definitions of what constitutes a \emph{word} within source code, the atomic unit with which vocabularies are composed.
-
-% Their study defined \emph{word} at the syntactic level of abstraction.
-
-% - Group lexicographically equivalent words only if they are used as the same part of speech
-
-% - For example, a class name and a function name that are lexicographically isomorphic are counted as separate words
-
-% - By using syntactic knowledge intelligently, they are are able to differentiate the definition of a word from its use. This allows us to detect polysemy and make approximate adjustments in our analyses
-
-% - This also included mathematical operators
+Abebe \etal, chose to define the source code vocabulary as being the union of five vocabularies that represent different abstractions within the source code: \emph{class name vocabulary} (CV), \emph{attribute name vocabulary} (AV), \emph{function name vocabulary} (FV), \emph{parameter vocabulary} (PV), and \emph{comment vocabulary} (CoV) \cite{Abebe09a}. Their study considered the symbols used within identifiers as well as individual terms used in comments to be part of the source code vocabulary. They extrapolated individual terms from the identifiers using common naming conventions used to improve the readability of source code \cite{Reddy00a}.
 
 % subsubsection existing_definitions_of_vocabulary (end)
 
 \subsubsection{Defining Vocabulary} % (fold)
 \label{ssub:defining_vocabulary}
 
-% Glue sentence -- Development is usually carried out by teams ... the usage of vocabulary is less likely to influence an individual as they form their own mental model with the code, whereas when mutliple developers are involved there is more of a need for this information to be shared and communicated accordingly.
+In their seminal computer science textbook \emph{Structure and Interpretation of Computer Programs} \cite{Abelson96a}, Abelson and Sussman wrote the following statement regarding the responsibility of programmers when developing software: ``Programs must be written for people to read, and only incidentally for machines to execute.'' This statement is especially relevant in the context of the vocabulary used by programmers and its ability to facilitate program comprehension through the maintenance stages of evolution.
 
-Accordingly, our definition of vocabulary has an emphasis on the elements of source code that are likely to be experienced by multiple developers, as opposed to an individual.
+In defining vocabulary for our study, we were interested in examining the conceptual terminology that is used by developers to communicate to other developers how an application should work and how it is built; in other words, elements of the source code that developers have some control over. Accordingly, we chose to exclude keywords and operators from our vocabulary as their purpose within the code is well understood and they do not contribute anything meaningful to the semantics of individual software systems. In effect, we consider only the identifiers used by developers as being part of the vocabulary.
 
-% Flow:
-% - We ignore language that is used in a localised scope (more speficially this means we ignore things into to methods...)
+Our definition of vocabulary also ignores vocabulary that is only accessible within a local scope; in other words, variables that are defined within a method. This decision was made as we wanted to obtain an understanding of the use of terminology that is global within an application, and thus, be of greater importance in program comprehension. Furthermore, local variable are often named in short-hand; for instance, using the name \emph{i} instead of \emph{index} as the identifier for a variable used as an index within a for loop. These kinds of transitory variables are likely to have an undue influence on the overall vocabulary.
 
-% - We focus on the language utilised by the developers for a project. It should be something that reflects the decision process of the developers involved in the project. Thus, we ignore elements of the vocabulary that developers do not have a choice in (refer to eliminating noise section)
-
-% - Section~\ref{ssub:eliminate_noise_in_the_vocabulary}
-
-% - Language that is used within a non-localised scope. Vocabulary defined within methods is self-contained. Therefore it usually not seen or dealt with by a lot of developers (can something be cited here?).
-
-% - Our definition prefers to deal with abstraction that are likely to be present to developers both involved in the development of the software and those who might programmatically use the software, but who are external to its development.
-
-% - We considered the set of class names, method names and field names to be apart of the vocabulary within source code of a software system.
+Overall, our definition of vocabulary includes the symbols drawn from the identifiers from \emph{classes}, \emph{methods} (name, return type and parameter types) and \emph{fields} (name, type). This closely resembles the definition of vocabulary that was used by Abebe \etal in \cite{Abebe09a}. However, unlike their study, we do not consider the terms used within comments to be part of the vocabulary. This decision was made as we wanted to study only vocabulary that was within executable elements of the source code and because the amount and quality of commentary was likely to be inconsistent across projects, which would impact the impact to generalise about the systems studied. Furthermore, we treated the vocabulary as a culmination of the terminology taken from each the aforementioned elements of the source code, rather than maintain separate vocabularies for each. This allows us to focus our efforts on the analyis of vocabulary as a single entity.
 
 % subsubsection defining_vocabulary (end)
 
 % subsection vocabulary_definition (end)
 
-\subsection{How the Data is Extracted} % (fold)
-\label{sub:how_the_data_is_extracted}
+\subsection{Extracting Information from Bytecode} % (fold)
+\label{sub:extracting_information_from_bytecode}
 
-For extracting the representation of vocabulary we used for our analysis from each of the software systems within our dataset, we utilised the \emph{Mutations} software evolution metric extraction analysis tool, which was described in \cite{Vasa10a}. Mutations utilises the ASM bytecode analysis and manipulation framework to extract metadata associated with a Java class from its compiled binary state (.class).
+For extracting the representation of vocabulary we used for our analysis from each of the software systems within our dataset, we utilised the \emph{Mutations} software evolution metric extraction analysis tool, which was described by Vasa in \cite{Vasa10a}. Mutations utilises the ASM bytecode analysis and manipulation framework to extract metadata associated with a Java class from its compiled binary state (.class).
 
-Amongst the metadata collected by the tool is information relating to the members of the class (i.e. its methods and fields). This information includes, for fields, the name of the field and its type; for methods, the name of the method, its return type and the types of each of its parameters. This metadata provided the elements from which we composed the vocabulary.
+% Use sentence from Raj's thesis to explain class structure...explain that this information is what we extract from the bytecode and what is used by us is highlighted in square brackets
+
+\begin{table}[t]
+\centering
+\begin{tabular}{|l|p{0.75\textwidth}|}
+	\hline
+\multirow{8}{*}{\textbf{General}} & [\emph{Fully Qualified Class Name}] \\
+ & Super Class Name, Interfaces Implemented \\
+ & Modifiers \\ 
+ & Constant Pool: Numeric, String and Type Constants\\
+ & Source File Name (optional)\\
+ & Enclosing Class References\\
+ & Annotation*\\
+ & Attribute*\\ \hline
+ \textbf{Inner Class*} & Name* \\ \hline
+\multirow{3}{*}{\textbf{Field*}} & Modifiers, [\emph{Name}], [\emph{Type}] \\ 
+& Annotation* \\
+& Attribute* \\ \hline
+\multirow{4}{*}{\textbf{Method*}} & Modifiers, [\emph{Name}], [\emph{Return Type}], [\emph{Parameter Types}] \\ 
+& Annotation* \\ 
+& Attribute* \\ 
+& Compiled Code (Java bytecode instructions) \\ \hline
+\end{tabular}
+\vspace{0.2cm}
+\caption{Structure of a compiled Java Class. Items that end with an * indicate a cardinality of zero or more \cite{Lindholm99a}. Items enclosed within square brackets are included within our representation of the vocabulary.}
+\vspace{0.5cm}
+\label{tab:class_structure}
+\end{table}
+
+Amongst the metadata collected by the tool is information relating to the members of the class (\ie its methods and fields). This information includes, for fields, the name of the field and its type; for methods, the name of the method, its return type and the types of each of its parameters. This metadata provided the elements from which we composed the vocabulary.
 
 In order to extract the terminology that composed the vocabulary, we extended Mutations to support the extrapolation of individual terms from these elements.
+
+% subsection extracting_information_from_bytecode (end)
 
 \subsubsection{Identifying Terms in the Source Code} % (fold)
 \label{ssub:identifying_terms_in_the_source_code}
 
-Best practices relating to naming identifiers within source code recommend using names that clearly and effectively communicate the purpose of what they represent. The result of this is that developers quite often utilise identifiers that are composed of multiple words. However, for the purposes of our study we considered each word that an identifier is composed of as a separate term within the vocabulary. For example, the identifier \emph{MainWindow} would be separated into two individual terms, \emph{main} and \emph{window}. 
+Best practices relating to naming identifiers within source code recommend using names that clearly and effectively communicate the purpose of what they represent \textbf{[Cite]}. The result of this is that developers quite often utilise identifiers that are composed of multiple words. However, for the purposes of our study we considered each word that an identifier is composed of as a separate term within the vocabulary. For example, the identifier \emph{MainWindow} would be separated into two individual terms, \emph{main} and \emph{window}. 
 
 In order to separate compound identifiers into the individual terms that they are composed of, we required appropriate guidelines to assist us in determining when an identifier has been composed of more than one term. For our purposes, we utilised the Java Coding Style Guide \cite{Reddy00a}, which is well adhered to within the open source community, as it has style guides for developers which apply alternative casing and delimiter characters to allow easier identification of individual terms within an identifier.
 
 For the naming of identifiers at any level of abstraction, the Java Coding Style Guide prescribes the following naming styles:
 
 \begin{description}
-	\item[Pascal case] Each word begins with an uppercase letter, followed by all lowercase letters\\ (e.g. ReportWriter produces \textbf{report} and \textbf{writer})
-	\item[Camel case] First word begins with a lower case letter, followed by all lowercase letters. Each trailing word beings with an uppercase letter, followed by all lowercase letters\\ (e.g. writeReport produces \textbf{write} and \textbf{report})
-	\item[Upper-case and underscore separated] Each word is composed of all capital letters and words are separated by an underscore\\ (e.g. MAX\_REPORT\_LENGTH produces \textbf{max}, \textbf{report} and \textbf{length})
+	\item[Pascal case] Each word begins with an uppercase letter, followed by all lowercase letters\\ (\eg ReportWriter produces \textbf{report} and \textbf{writer})
+	\item[Camel case] First word begins with a lower case letter, followed by all lowercase letters. Each trailing word beings with an uppercase letter, followed by all lowercase letters\\ (\eg writeReport produces \textbf{write} and \textbf{report})
+	\item[Upper-case and underscore separated] Each word is composed of all capital letters and words are separated by an underscore\\ (\eg MAX\_REPORT\_LENGTH produces \textbf{max}, \textbf{report} and \textbf{length})
 \end{description}
 
 The application of these naming conventions as it relates to the elements that make up our vocabulary are defined as follows:
@@ -346,13 +347,13 @@ To allow for a representation of vocabulary that reflected the choice of termino
 
 Our initial observations showed that the most frequently used terms across all of the projects we selected consisted primarily of the primitive types available within the Java language. As developers are bound by the language itself to use the types, they did not fall within our definition of vocabulary. Additionally, the frequency of their usage was sufficiently high that they were likely to deter the ability to detect changes in the rest of the vocabulary.
 
-Amongst the most frequently used terms, were those prescribed by the naming conventions to be used for writing Java code outlined in \cite{Reddy00a}. This included terms such as \emph{get} and \emph{set}, terms used for naming acessors and mutators within Java programs. As conformance to such coding styles is mandated by most successful \OSYS, these terms were also ignored.
+Amongst the most frequently used terms were those prescribed by the naming conventions to be used for writing Java code outlined in \cite{Reddy00a}. This included terms such as \emph{get} and \emph{set}, terms used for naming acessors and mutators within Java programs. As conformance to such coding styles is mandated by most successful \OSYS, these terms were also ignored.
 
 We were able to refine our subset of vocabulary further by identifying terms that were ambiguous and not contributing any substantial meaning to the vocabulary, but were commonly found terms within each of the projects. For instance, the terms \emph{data}, \emph{name} and \emph{value} are all terms that are typically used in conjunction with other terms and on their own have very low semantic value.
 
-Taking the notion of isolating vocabulary that was more likely to be project-specific a step further, we also compiled a list of the data structure and I/O types available within the Java SDK to be excluded from our analysis. This included extensions of primitive types (e.g. BigDecimal, BigInteger), collection types (e.g. ArrayList, HashMap), as well as types used for accessing data streams (e.g. InputStream, OutputStream).
+Taking the notion of isolating vocabulary that was more likely to be project-specific a step further, we also compiled a list of the data structure and I/O types available within the Java SDK to be excluded from our analysis. This included extensions of primitive types (\eg BigDecimal, BigInteger), collection types (\eg ArrayList, HashMap), as well as types used for accessing data streams (\eg InputStream, OutputStream).
 
-A complete list of both the terms that were excluded from the representation of vocabulary that we analysed can be found in Chapter~\ref{cha:cha:vocabulary_analysis_files}.
+A complete list of the terms that were excluded from the representation of vocabulary that we analysed has been made available as an online resource, the URL for which can be found in \appendixref{vocabulary_analysis_files}.
 
 % subsubsection eliminate_noise_in_the_vocabulary (end)
 
@@ -376,7 +377,7 @@ Finally, we take the vocabulary we extracted for each class and combine them tog
 \label{fig:vocab-metric-extraction}
 \end{figure}
 
-\begin{lstlisting}[caption={Code sample showing the extraction of terms from various elements of the source code}, label={lst:extraction_example}, float=t]
+\begin{lstlisting}[caption={Code sample showing the extraction of terms from various elements of the source code. Above each element is a comment describing the terms extracted from the element and the part of the element they were extracted from. At the bottom is a list of the terms extracted (including noise terms that were ignored) and their occurrence count.}, label={lst:extraction_example}, float=t]
 public class ReportWriter // report, writer (class name)
 {   
     // string (type); report, break (name)
@@ -455,17 +456,19 @@ public class ReportWriter // report, writer (class name)
 
 % section vocabulary_extraction (end)
 
-\section{Summary} % (fold)
-\label{sec:summary}
+% \section{Summary} % (fold)
+% \label{sec:summary}
+% 
+% % Summarise what was covered...
+% 
+% % - What types of evolution data were outlined
+% % - We study OSS
+% % - Vocabulary is defined as ...
+% 
+% % In the next chapter we address the research questions proposed in regard to the evolution of vocabulary. We...
+% 
+% 
+% 
+% % section summary (end)
 
-% Summarise what was covered...
-
-% - What types of evolution data were outlined
-% - We study OSS
-% - Vocabulary is defined as ...
-
-% In the next chapter we address the research questions proposed in regard to the evolution of vocabulary. We...
-
-
-
-% section summary (end)
+% chapter method (end)
