@@ -4,14 +4,14 @@
 \chapter{Vocabulary Analysis Files} % (fold)
 \label{cha:vocabulary_analysis_files}
 
-The data referred to in the study of change (\chapref{Findings}) is  described in \tabref{change_files}, and located in the directory \texttt{data/change} on the DVD. The data is also available online at: 
+The data referred to in the study of vocabulary (\chapref{findings}) is described in \tabref{analysis_files}, and located in the directory \texttt{data} on the DVD. The data is also available online at: 
 \vspace{-0.5cm}
 
-\url{http://www.ict.swin.edu.au/personal/rvasa/thesis/data}
+\url{http://ict.swin.edu.au/research/projects/helix/}
 
-The raw metric data is provided as a comma separated values (CSV) file, and the first line of the file contains the header. A detailed output of the statistical analysis undertaken is provided as log files generated directly from Stata (a statistical analysis software) \cite{Stata09a}.
+The raw metric data is provided as comma separated values (CSV) files, and the first line of the file contains the header.
 
-The data table (\tabref{change_files}) is on the next page.
+The data table (\tabref{analysis_files}) is on the next page.
 
 \begin{table}[t]
 \vspace{-3.0cm}
@@ -40,10 +40,12 @@ The data table (\tabref{change_files}) is on the next page.
 \hline
 \texttt{common-types.txt} & Contains the list of common types that we ignored in our analysis. \\
 \hline
+\texttt{ant-dev-emails.pdf} & Contains the email correspondence with the developers of Ant. \\
+\hline
 
 \end{tabular}
-\caption{Data files used in our analysis of Vocabulary (\chapref{Findings})}.
-\label{tab:change_files}
+\caption{Data files used in our analysis of vocabulary (\chapref{findings})}.
+\label{tab:analysis_files}
 \end{table}
 
 % chapter vocabulary_analysis_files (end)
@@ -51,11 +53,21 @@ The data table (\tabref{change_files}) is on the next page.
 \chapter{Vocabulary Analysis Reports} % (fold)
 \label{cha:vocabulary_analysis_reports}
 
+The data used in this thesis was collected via an extension developed for the Mutations software evolution tool. Mutations consists of the following modules:
+
+\textbf{Metric Extractor:} Extracts the metric data from Java class files for each version of the system and stores them in plain-text (JSON format).
+
+\textbf{Report Generator:} Generates statistical reports using the extracted metric data.
+
+As part of this research effort, we extended the \emph{Report Generator} module to allow the generation of statistical reports for the analysis of vocabulary.
+
+The reports developed for Mutations and used to generate the statistics for the study of vocabulary (\chapref{findings}) are described in \tabref{vocabulary_reports}, and located in the directory \texttt{mutations} on the DVD. The source code is also available online at: 
+
 \vspace{-0.5cm}
 
-\url{http://www.ict.swin.edu.au/personal/rvasa/thesis/data}
+\url{https://github.com/swincsse/mutations}
 
-The data table (\tabref{change_files}) is on the next page.
+The vocabulary analysis report table (\tabref{vocabulary_reports}) is on the next page.
 
 \begin{table}[t]
 \vspace{-3.0cm}
@@ -64,22 +76,22 @@ The data table (\tabref{change_files}) is on the next page.
 \hline
 {\bf Report} & {\bf \#} & {\bf Description} \\
 \hline \hline 
-\texttt{Vocabulary Growth} & 201 & Produces the evolution of vocabulary size for a system \\
+\texttt{Vocabulary Growth} & 201 & Produces the evolution of vocabulary size \\
 \hline
 \texttt{Term Frequency} & 202 & Produces the frequency distribution of term usage for each version \\
 \hline
-\texttt{Term Gini} & 203 &  \\
+\texttt{Term Gini} & 203 & Produces the evolution of the Gini Coefficient of terms in the vocabulary used to identify changes in distribution \\
 \hline
-\texttt{Term Frequency Age} & 204 &  \\
+\texttt{Term Frequency} \par \texttt{vs. Age} & 204 & Produces the age of a term and the frequency of its usage based on the release in which it was introduced \\
 \hline
-\texttt{Popular Term} & 205 &  \\
+\texttt{Popular Terms} & 205 & Produces a list of the most popular terms within the vocabulary \\
 \hline
-\texttt{Popular Term History} & 206 &  \\
+\texttt{Popular Term} \par \texttt{History} & 206 & Produces the usage history of terms in the vocabulary, sorted by popularity \\
 \hline
 
 \end{tabular}
-\caption{Reports used to generate statistics for analysis (\chapref{Findings})}
-\label{tab:change_files}
+\caption{Reports used to generate statistics for analysis (\chapref{findings})}
+\label{tab:vocabulary_reports}
 \end{table}
 
 % chapter vocabulary_analysis_reports (end)

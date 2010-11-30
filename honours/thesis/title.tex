@@ -21,32 +21,30 @@ Melbourne, Australia\\}
 
 Software developers are afforded great flexibility in regard to the terminology they can use to when writing source code. This freedom allows developers to be expressive about what the software should do and the design elements involved in its construction. The terminology used is not arbitrarily selected, but rather, composed of a vocabulary of words and phrases that map to the developers understanding of the software system.
 
-As a software system is maintained, the vocabulary will be subjected to change, being modified and extended to support the introduction of new functionality. To enable developers to adapt their mental model of a software system to support this, significant changes to the vocabulary must be identified and communicated appropriately.
+As a software system is maintained, the vocabulary will be subjected to change, being modified and extended to support the introduction of new functionality. To enable developers to adapt their mental model of a software system as it evolves, significant changes to the vocabulary must be identified and communicated appropriately.
 
 In this thesis, we address the problem of identifying when efforts towards maintaining vocabulary are required and to which areas of the software they are best directed. We conduct a study of over 30 open source Java software systems, investigating how and when source code vocabularies are formed in the process of software evolution, the nature of their growth and change and how the terms in the vocabulary are distributed throughout the codebase.
 
-Our findings show that vocabulary that is formed early in a system's lifetime is, in general, consistently the most popular and reveals the domain as well as the key design patterns in use. Although evolution motivates the the introduction of new terms, the vocabulary grows at a similar, albeit slower, rate as the overall system size. Despite this, the vocabulary as a whole is stable and only rarely do new terms gain substantial popularity over time. Furthermore, we found support for the laws of software evolution in evolving source code vocabularies.
-
-% Vocabulary that is formed early in the system's life is, in general, consistently the most popular and reveals the domain as well as the key design patterns in use. Although evolution motivates the creation of new terms, the vocabulary grows at a similar rate to as overall size. However, only rarely do new terms gain substantial popularity.
-
-% Dedication
-\newpage \vspace*{8cm} 
-\begin{center}
-	\large Dedications
-\end{center}
-\newpage
+Our findings show that vocabulary that is formed early in a system's lifetime, in general, reveals the domain as well as the key design patterns in use. Although evolution motivates the the introduction of new terms, the vocabulary growth rate is slower than that of system size. Furthermore, the vocabulary as a whole is stable and only rarely do new terms gain substantial popularity over time. Additionally, we found that the laws of software evolution have validity within the context of vocabulary evolution.
 
 % Acknowledgements
 \pdfbookmark[0]{Acknowledgements}{acknowledgements}
 \chapter*{Acknowledgements}
 \vspace{-0.5cm}
 
-\vspace*{4cm}
-Allan Jones, 2010
+I would first and foremost like to acknowledge the efforts of my supervisor, Dr. Rajesh Vasa, who provided invaluable assistance in the guidance and execution of the work carried out, and for helping me engage in the world of academic research. I am also thankful to the two other members of my research group, Bianca Rinaldi and Leonard Hoon, for their excellent feedback and suggestions for how to improve the research, as well as their continuing support and encouragement.
+
+On a personal note, I would like to thank my family and close friends for all of the love and support they have shown throughout not only the completion of my thesis, but also the time leading up to it.
+
+\vspace*{4cm} Allan Jones, 2010
 
 % Declaration
 \chapter*{Declaration}
 \vspace{-0.5cm}
+
+I declare that this thesis contains no material that has been accepted for the award of any other degree or diploma and to the best of my knowledge contains no material previously published or written by an- other person except where due reference is made in the text of this thesis.
+
+\vspace*{4cm} Allan Jones, 2010
 
 \singlespacing
 

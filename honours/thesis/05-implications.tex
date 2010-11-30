@@ -2,55 +2,35 @@
 \chapter{Implications} % (fold)
 \label{cha:implications}
 
-In previous two chapters we addressed the research questions that mo- tivated this thesis. In this chapter we discuss the implications arising from our observations. Specifically, in Section~\ref{sec:laws_of_software_evolution} we discuss how our findings provide support for some of the laws of software evolution, and offer recommendations to help improve software development practices in Section~\ref{sec:software_development_practices}.
+In the previous chapter we addressed the research questions that motivated this thesis. In this chapter we discuss the implications arising from our observations. Specifically, in \secref{laws_of_software_evolution} we discuss how our findings provide support for some of the laws of software evolution, and offer recommendations to help improve software development practices in \secref{software_development_practices}.
 
 \section{Laws of Software Evolution} % (fold)
 \label{sec:laws_of_software_evolution}
 
-\textbf{Lehman's laws describe the evolution of software systems...}
+The laws of software evolution, first proposed by Lehman and Belady \cite{Lehman85a}, provide a model of reasoning about how software evolves based on exploratory studies observing the behaviour exhibited by a small number of large scale software systems across their lifetime. Studies of software evolution have investigated the validity of the arguments laid out by each of the laws and, based on empirical evidence, have found varying levels of support \cite{Madhavji06a, Mens08b, DAmbros07a, Vasa10a} or lack thereof \cite{Godfrey00a, WuSpitzer04a, Paulson04a, Capiluppi03a} for the laws. Despite these studies showing some support for the laws in describing evolving software systems, it is uncertain whether these laws describe only the culmination of all aspects of a software system or whether they are also effective in describing subsystems of the software. Additionally, previous studies have not considered if the laws apply to vocabularies.
 
-\textbf{But it is unknown whether these laws describe only the culmination of all aspects of a software system or whether they are also effective in describing subsystems of the software as well.}
+In our study, we investigated the impact that evolution yields upon the size and distribution of the vocabulary used by developers within source code and whether the characteristics shown by evolving vocabularies show support for the laws as described by Lehman.
 
-\textbf{In our study, we investigated the impact that evolution yields upon the size and distribution of the vocabulary used by developers within source code and whether the characteristics shown by evolving vocabularies support the laws as described by Lehman.}
-
-Specifically, we find support for the first law \emph{Continuing Change}, fifth law \emph{Conservation of Familiarity}, and the sixth law \emph{Continuing Growth}. However, our analysis was not able to provide suf- ficient evidence to show support for the other laws.
+Specifically, we find support for the first law \emph{Continuing Change}, fifth law \emph{Conservation of Familiarity}, and the sixth law \emph{Continuing Growth}. However, our analysis was not able to provide sufficient evidence to show support for the other laws.
 
 \subsubsection{Change} % (fold)
 \label{ssub:change}
 
-Our observations of the distribution of vocabulary showed a consistent increase in the inequality of wealth, providing support for the first law of software evolution -- \emph{Continuing Change}. In terms of change, the expectation of software, based on previous studies, is that the amount of change overall will be small and that change will be brought about incrementally, rather than in large bursts. Our findings showed that this was also the case for vocabulary, which showed greater levels of stability than software as a whole. The overall stability of the vocabulary indicates that once a mental model has been established by developers, it becomes highly resistant to change and undergoes small refinements, as opposed to substantial modifications. We found that the largest changes occur in major releases, coninciding with functional growth, indicating that change is more likely to accomodate new features, rather than other maintenance activities.
+Our observations of the distribution of vocabulary showed a consistent increase in the inequality of wealth, providing support for the first law of software evolution -- \emph{Continuing Change}. In terms of change, the expectation of software, based on previous studies \cite{Schneider03a, Vasa07a, Vasa07b}, is that the amount of change overall will be small and that change will be brought about incrementally, rather than in large bursts. Our findings showed that this was also the case for vocabulary, which showed greater levels of stability than software as a whole. The overall stability of the vocabulary indicates that once a mental model has been established by developers, it becomes highly resistant to change and undergoes small refinements, as opposed to substantial modifications. We found that the largest changes occur in major releases, coinciding with functional growth, indicating that change is more likely to accommodate new features, rather than other maintenance activities.
 
 % subsubsection change (end)
-
-\subsubsection{Complexity} % (fold)
-\label{ssub:complexity}
-
-\crumbs{\textbf{Complexity is kinda hard to define}}
-
-\crumbs{\textbf{Growth patterns (predominately sub-linear) indicate that there is increasing complexity}}
-
-\crumbs{\textbf{Bound Gini values also support this}}
-
-% subsubsection complexity (end)
 
 \subsubsection{Familiarity} % (fold)
 \label{ssub:familiarity}
 
-The fifth law (Conservation of Familiarity) suggests that a software system will grow at a rate at which enables its developers to maintain familiarity with the code base. This was supported in our study by the prominence of sub-linear growth patterns for vocabulary, which indicated that terms within the vocabulary were being re-used. Furthemore, the consistently increasing Gini Coefficient value showed that developers tend to re-use a subset of terms that were more familiar than others. This was also evident in our findings that older terms were more likely candidates for re-use.
+The fifth law (Conservation of Familiarity) suggests that a software system will grow at a rate at which enables its developers to maintain familiarity with the code base. This was supported in our study by the prominence of sub-linear growth patterns for vocabulary (cf. \secref{growth_in_vocabulary}), which indicated that terms within the vocabulary were being re-used. Furthermore, the consistently increasing Gini Coefficient value (cf. \subsecref{the_rich_get_richer}) showed that developers tend to re-use a subset of terms that were more familiar than others. This was also evident in our findings that older terms were more likely candidates for re-use (cf. \secref{the_role_of_age_in_term_re_use}).
 
 % subsubsection familiarity (end)
 
 \subsubsection{Growth} % (fold)
 \label{ssub:growth}
 
-Our observations show that vocabulary undergoes continual addition across releases, although the rate of vocabulary growth generally slows as the system matures. As our findings showed that the rate at which terms were introduced into the vocabulary was typically similar to that at which the system size was growing, it appears as though new terminology is being introduced to support functional growth.
-
-
-% The sixth law (Continuing Growth) states that “evolving software must be continually enhanced to maintain user satisfaction”.
-% 
-% 
-% Our observations show that software systems are built incrementally bottom-up and that there is a small proportion of code that constitutes new classes in every release. Though, new classes need not always con-
-% tain new functionality (which is possible if new classes were created due to refactoring), the consistency with which new classes are added sug- gests that developers grow software systems by adding functionality in new classes.
+The sixth law (Continuing Growth) states that ``evolving software must be continually enhanced to maintain user satisfaction.'' Our observations show that vocabulary undergoes continual addition across releases, although the rate of vocabulary growth generally slows as the system matures. As our findings (cf. \subsubsecref{vocabulary_vs_system_size}) showed that the rate at which terms were introduced into the vocabulary was typically similar to that at which the system size was growing, it appears as though new terminology is being introduced to support functional growth.
 
 % subsubsection growth (end)
 
@@ -59,38 +39,26 @@ Our observations show that vocabulary undergoes continual addition across releas
 \section{Software Development Practices} % (fold)
 \label{sec:software_development_practices}
 
-\crumbs{{\bf Introduction section}}
-
-\textbf{What did we find and what implications does it have for development practices?}
+In the following section, we discuss how our findings may be used to improve the software development practices of project managers and developers related to establishing and maintaining an understanding of the vocabulary used within software systems.
 
 \subsubsection{Guiding Documentation} % (fold)
 \label{ssub:guiding_documentation}
 
-- Extraction of popularly used (important) vocabulary showed that we were about to highlight terms of high semantic value... 
-
-- Detecting big changes in how the vocabulary is used
-
-- Determining when the amount of vocabulary has substantially
-
-- Not only the production of documentation capturing vocabulary from an early stage, but also ongoing
+Our technique of extracting vocabulary was able to identify terminology that was of a high value in comprehension of the domain model of the software based on the frequency of their usage (cf. \secref{mining_the_domain_model}). This capability can be applied in identifying domain-related terminology within the code base to guide documentation efforts, or in the case where documentation already exists, highlighting terms that may be missing. Combined with the ability to detect substantial changes in vocabulary, this could also be helpful in determining when important new terms have been introduced within a given release and must be documented.
 
 % subsubsection guiding_documentation (end)
 
 \subsubsection{Informing New Developers} % (fold)
 \label{ssub:informing_new_developers}
 
-- 
-
-- Present a concise snapshot of vocabulary that is relevant to the building mental models for developers new to a piece of software and give an idea of the history of terms
+Developers that are new to a software system often require training and exposure to a system in order to form a mental model of the system that will adequately facilitate program comprehension \cite{Letovsky87a}. In being able to identify the terminology that is pertinent in understanding the domain within which the system operates, a concise snapshot of the vocabulary that is of high semantic value within the source code can be provided to developers that are unfamiliar with a project in order to aid them in establishing a mental model of the system.
 
 % subsubsection informing_new_developers (end)
 
 \subsubsection{Iteration Retrospectives} % (fold)
 \label{ssub:iteration_retrospectives}
 
-- Run tooling at the end of iterations
-
-- Gives an alternative perspective (may pick up things not considered by the developers and act as a trigger)
+Currently, when determining the primary drivers of change that has taken place within an iteration, there is a reliance on the efforts of individuals to manually identify the elements of the software that have changed and capture this information appropriately. This information can often be incomplete or misleading, if it has been captured at all, due to the human element involved that allows for potential oversights \cite{Chapin01a}. By being able to detect substantial changes in the vocabulary, an alternative perspective to that of the developers considerations of change within an iteration can be presented in the context of an iteration retrospective. This could act as a trigger to the project manager and developers to capture change that they may not have considered themselves. This technique can also be used within the context of educating the next generation of software developers. Specifically, tooling can be created to help students focus on aspects that need to be considered when creating a design document. 
 
 % subsubsection iteration_retrospectives (end)
 
